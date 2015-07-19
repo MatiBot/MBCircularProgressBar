@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0Y6-NN-x5f">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="0Oe-Zf-BEY">
+            <objects>
+                <viewController id="0Y6-NN-x5f" customClass="MBViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W14-1S-65i"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nym-Pj-yyg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f3k-s0-vqc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubh-gd-bZD" customClass="MBCircularProgressBarView">
+                                <rect key="frame" x="201" y="200" width="200" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="BDy-UV-7Ph"/>
+                                    <constraint firstAttribute="width" constant="200" id="Tgw-oq-C05"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="percent">
+                                        <real key="value" value="0.050000000000000003"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                        <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="98" y="117" width="205" height="166"/>
+                                </variation>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0W-8X-9Su">
+                                <rect key="frame" x="272" y="562" width="57" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hEE-2u-Nw7"/>
+                                    <constraint firstAttribute="width" constant="57" id="oqb-Ra-tbt"/>
+                                </constraints>
+                                <state key="normal" title="Animate">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="animate:" destination="0Y6-NN-x5f" eventType="touchUpInside" id="VD3-su-hWZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ubh-gd-bZD" secondAttribute="centerX" constant="-0.5" id="0Y5-FT-xn3"/>
+                            <constraint firstAttribute="centerX" secondItem="R0W-8X-9Su" secondAttribute="centerX" constant="-0.5" id="M2W-2e-9Ve"/>
+                            <constraint firstItem="Nym-Pj-yyg" firstAttribute="top" secondItem="R0W-8X-9Su" secondAttribute="bottom" constant="8" id="dnI-Ci-CrM"/>
+                            <constraint firstAttribute="centerY" secondItem="ubh-gd-bZD" secondAttribute="centerY" id="lYK-k8-qTy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="progressBar" destination="ubh-gd-bZD" id="R0Q-Zc-adJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qbe-j5-CDb" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

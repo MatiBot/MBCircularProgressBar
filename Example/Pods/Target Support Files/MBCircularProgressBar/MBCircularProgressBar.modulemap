@@ -1,0 +1,6 @@
+framework module MBCircularProgressBar {
+  umbrella header "MBCircularProgressBar-umbrella.h"
+
+  export *
+  module * { export * }
+}
