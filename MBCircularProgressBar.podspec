@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.license          = 'MIT'
   s.author           = { "Mati Bot" => "matibot@gmail.com" }
   s.source           = { :git => "https://github.com/matibot/MBCircularProgressBar.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/@b0tnik'
+  s.social_media_url = 'https://twitter.com/@b0tnik'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
