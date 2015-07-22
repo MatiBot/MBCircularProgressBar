@@ -10,8 +10,15 @@
 
 @interface MBCircularProgressBarLayer : CALayer
 
+@property (nonatomic,assign) CGFloat progressAngle;
 @property (nonatomic,assign) CGFloat percent;
-@property (nonatomic,assign) CGFloat lineWidth;
-@property (nonatomic) UIColor* progressColor;
+
+@property (nonatomic,assign) CGFloat progressLineWidth;
+@property (nonatomic,strong) UIColor* progressColor;
+@property (nonatomic,assign) NSUInteger progressCapType;
+
+@property (nonatomic,assign) CGFloat emptyLineWidth;
+@property (nonatomic,assign) NSUInteger emptyCapType;
+@property (nonatomic,strong) UIColor* emptyLineColor;
 
 @end

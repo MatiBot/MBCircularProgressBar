@@ -11,8 +11,14 @@
 IB_DESIGNABLE
 @interface MBCircularProgressBarView : UIView
 
+@property (nonatomic) IBInspectable CGFloat progressAngle;
 @property (nonatomic) IBInspectable CGFloat percent;
-@property (nonatomic) IBInspectable CGFloat lineWidth;
-@property (nonatomic) IBInspectable UIColor* progressColor;
 
+@property (nonatomic) IBInspectable CGFloat progressLineWidth;
+@property (nonatomic) IBInspectable UIColor* progressColor;
+@property (nonatomic) IBInspectable NSUInteger progressCapType;
+
+@property (nonatomic) IBInspectable CGFloat emptyLineWidth;
+@property (nonatomic) IBInspectable UIColor* emptyLineColor;
+@property (nonatomic) IBInspectable NSUInteger emptyCapType;
 @end

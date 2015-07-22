@@ -13,8 +13,14 @@
 
 @implementation MBCircularProgressBarLayer
 @dynamic percent;
-@dynamic lineWidth;
+@dynamic progressLineWidth;
 @dynamic progressColor;
+@dynamic emptyLineWidth;
+@dynamic progressAngle;
+@dynamic emptyLineColor;
+@dynamic emptyCapType;
+@dynamic progressCapType;
+
 
 #pragma mark - Drawing
 
@@ -36,22 +42,22 @@
     
     CGPathAddArc(arc, NULL,
                  rectSize.width/2, rectSize.height/2,
-                 MIN(rectSize.width,rectSize.height)/2 - self.lineWidth,
-                 0.25*M_PI,
-                 -1.25*M_PI + self.percent*1.5*M_PI,
+                 MIN(rectSize.width,rectSize.height)/2 - self.progressLineWidth,
+                 (self.progressAngle/100.f)*M_PI-0.5*M_PI,
+                 -(self.progressAngle/100.f)*M_PI-0.5*M_PI,
                  YES);
     
 
     CGPathRef strokedArc =
     CGPathCreateCopyByStrokingPath(arc, NULL,
-                                   1.f,
-                                   kCGLineCapButt,
+                                   self.emptyLineWidth,
+                                   (CGLineCap)self.emptyCapType,
                                    kCGLineJoinMiter,
                                    10);
     
     
     CGContextAddPath(c, strokedArc);
-    CGContextSetStrokeColorWithColor(c, [UIColor lightGrayColor].CGColor);
+    CGContextSetStrokeColorWithColor(c, self.emptyLineColor.CGColor);
     CGContextDrawPath(c, kCGPathFillStroke);
 }
 
@@ -60,15 +66,15 @@
     
     CGPathAddArc(arc, NULL,
                  rectSize.width/2, rectSize.height/2,
-                 MIN(rectSize.width,rectSize.height)/2 - self.lineWidth,
-                 -1.25*M_PI + self.percent*1.5*M_PI,
-                 0.75*M_PI,
+                 MIN(rectSize.width,rectSize.height)/2 - self.progressLineWidth,
+                 (self.progressAngle/100.f)*M_PI-0.5*M_PI-(2.f*M_PI)*(self.progressAngle/100.f)*(100.f-self.percent)/100.f,
+                 -(self.progressAngle/100.f)*M_PI-0.5*M_PI,
                  YES);
     
     CGPathRef strokedArc =
     CGPathCreateCopyByStrokingPath(arc, NULL,
-                                   self.lineWidth,
-                                   kCGLineCapRound,
+                                   self.progressLineWidth,
+                                   (CGLineCap)self.progressCapType,
                                    kCGLineJoinMiter,
                                    10);
 
@@ -86,7 +92,7 @@
     
     NSDictionary* percentFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: @"HelveticaNeue-Thin" size:rectSize.height/5], NSForegroundColorAttributeName: UIColor.blackColor, NSParagraphStyleAttributeName: textStyle};
     
-    NSString* percentText = [NSString stringWithFormat:@"%.f%%",self.percent*100];
+    NSString* percentText = [NSString stringWithFormat:@"%.f%%",self.percent];
     
     CGSize percentSize = [percentText sizeWithAttributes:percentFontAttributes];
   

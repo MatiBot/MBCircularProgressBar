@@ -31,12 +31,20 @@
     return self.progressLayer.percent;
 }
 
--(void)setLineWidth:(CGFloat)percent{
-    self.progressLayer.lineWidth = percent;
+-(void)setProgressLineWidth:(CGFloat)width{
+    self.progressLayer.progressLineWidth = width;
 }
 
--(CGFloat)lineWidth{
-    return self.progressLayer.lineWidth;
+-(CGFloat)progressLineWidth{
+    return self.progressLayer.progressLineWidth;
+}
+
+-(void)setEmptyLineWidth:(CGFloat)width{
+    self.progressLayer.emptyLineWidth = width;
+}
+
+-(CGFloat)emptyLineWidth{
+    return self.progressLayer.emptyLineWidth;
 }
 
 -(void)setProgressColor:(UIColor*)color{
@@ -46,6 +54,39 @@
 -(UIColor*)progressColor{
     return self.progressLayer.progressColor;
 }
+
+-(void)setEmptyLineColor:(UIColor *)emptyLineColor{
+    self.progressLayer.emptyLineColor = emptyLineColor;
+}
+
+-(UIColor*)emptyLineColor{
+    return self.progressLayer.emptyLineColor;
+}
+
+-(void)setProgressAngle:(CGFloat)progressAngle{
+    self.progressLayer.progressAngle = progressAngle;
+}
+
+-(CGFloat)progressAngle{
+    return self.progressLayer.percent;
+}
+
+-(void)setProgressCapType:(NSUInteger)progressCapType{
+    self.progressLayer.progressCapType = progressCapType;
+}
+
+-(NSUInteger)progressCapType{
+    return self.progressLayer.progressCapType;
+}
+
+-(void)setEmptyCapType:(NSUInteger)emptyCapType{
+    self.progressLayer.emptyCapType = emptyCapType;
+}
+
+-(NSUInteger)EmptyCapType{
+    return self.progressLayer.emptyCapType;
+}
+
 
 #pragma mark - CALayer
 
