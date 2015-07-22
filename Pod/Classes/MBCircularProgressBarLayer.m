@@ -15,11 +15,14 @@
 @dynamic percent;
 @dynamic progressLineWidth;
 @dynamic progressColor;
+@dynamic progressStrokeColor;
 @dynamic emptyLineWidth;
 @dynamic progressAngle;
 @dynamic emptyLineColor;
 @dynamic emptyCapType;
 @dynamic progressCapType;
+@dynamic fontColor;
+@dynamic progressRotationAngle;
 
 
 #pragma mark - Drawing
@@ -43,8 +46,8 @@
     CGPathAddArc(arc, NULL,
                  rectSize.width/2, rectSize.height/2,
                  MIN(rectSize.width,rectSize.height)/2 - self.progressLineWidth,
-                 (self.progressAngle/100.f)*M_PI-0.5*M_PI,
-                 -(self.progressAngle/100.f)*M_PI-0.5*M_PI,
+                 (self.progressAngle/100.f)*M_PI-((self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
+                 -(self.progressAngle/100.f)*M_PI-((self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
                  YES);
     
 
@@ -67,8 +70,8 @@
     CGPathAddArc(arc, NULL,
                  rectSize.width/2, rectSize.height/2,
                  MIN(rectSize.width,rectSize.height)/2 - self.progressLineWidth,
-                 (self.progressAngle/100.f)*M_PI-0.5*M_PI-(2.f*M_PI)*(self.progressAngle/100.f)*(100.f-self.percent)/100.f,
-                 -(self.progressAngle/100.f)*M_PI-0.5*M_PI,
+                 (self.progressAngle/100.f)*M_PI-((self.progressRotationAngle/100.f)*2.f+0.5)*M_PI-(2.f*M_PI)*(self.progressAngle/100.f)*(100.f-self.percent)/100.f,
+                 -(self.progressAngle/100.f)*M_PI-((self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
                  YES);
     
     CGPathRef strokedArc =
@@ -81,7 +84,7 @@
     
     CGContextAddPath(c, strokedArc);
     CGContextSetFillColorWithColor(c, self.progressColor.CGColor);
-    CGContextSetStrokeColorWithColor(c, self.progressColor.CGColor);
+    CGContextSetStrokeColorWithColor(c, self.progressStrokeColor.CGColor);
     CGContextDrawPath(c, kCGPathFillStroke);
 }
 
@@ -90,7 +93,7 @@
     NSMutableParagraphStyle* textStyle = NSMutableParagraphStyle.defaultParagraphStyle.mutableCopy;
     textStyle.alignment = NSTextAlignmentLeft;
     
-    NSDictionary* percentFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: @"HelveticaNeue-Thin" size:rectSize.height/5], NSForegroundColorAttributeName: UIColor.blackColor, NSParagraphStyleAttributeName: textStyle};
+    NSDictionary* percentFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: @"HelveticaNeue-Thin" size:rectSize.height/5], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
     
     NSString* percentText = [NSString stringWithFormat:@"%.f%%",self.percent];
     

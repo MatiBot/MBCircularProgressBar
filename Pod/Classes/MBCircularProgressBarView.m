@@ -55,6 +55,22 @@
     return self.progressLayer.progressColor;
 }
 
+-(void)setFontColor:(UIColor*)color{
+    self.progressLayer.fontColor = color;
+}
+
+-(UIColor*)fontColor{
+    return self.progressLayer.fontColor;
+}
+
+-(void)setProgressStrokeColor:(UIColor*)color{
+    self.progressLayer.progressStrokeColor = color;
+}
+
+-(UIColor*)progressStrokeColor{
+    return self.progressLayer.progressStrokeColor;
+}
+
 -(void)setEmptyLineColor:(UIColor *)emptyLineColor{
     self.progressLayer.emptyLineColor = emptyLineColor;
 }
@@ -71,20 +87,36 @@
     return self.progressLayer.percent;
 }
 
--(void)setProgressCapType:(NSUInteger)progressCapType{
-    self.progressLayer.progressCapType = progressCapType;
+-(void)setProgressRotationAngle:(CGFloat)progressRootationAngle{
+    self.progressLayer.progressRotationAngle = progressRootationAngle;
 }
 
--(NSUInteger)progressCapType{
+-(CGFloat)progressRootationAngle{
+    return self.progressLayer.progressRotationAngle;
+}
+
+-(void)setProgressCapType:(NSInteger)progressCapType{
+    self.progressLayer.progressCapType = [self safeCapType:progressCapType];
+}
+
+-(NSInteger)progressCapType{
     return self.progressLayer.progressCapType;
 }
 
--(void)setEmptyCapType:(NSUInteger)emptyCapType{
-    self.progressLayer.emptyCapType = emptyCapType;
+-(void)setEmptyCapType:(NSInteger)emptyCapType{
+    self.progressLayer.emptyCapType = [self safeCapType:emptyCapType];
 }
 
--(NSUInteger)EmptyCapType{
+-(NSInteger)EmptyCapType{
     return self.progressLayer.emptyCapType;
+}
+
+-(CGLineCap)safeCapType:(NSInteger)type{
+    if(0 <= type && type <= 2){
+        return (CGLineCap)type;
+    }
+    
+    return kCGLineCapRound;
 }
 
 
