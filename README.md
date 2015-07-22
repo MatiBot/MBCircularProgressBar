@@ -23,7 +23,7 @@ pod "MBCircularProgressBar"
 
 ## Author
 
-Mati Bot, matibot@gmail.com
+Mati Bot, matibot@gmail.com, [@b0tnik](https://twitter.com/b0tnik)
 
 ## License
 
