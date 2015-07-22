@@ -9,10 +9,10 @@
 
 Pod::Spec.new do |s|
   s.name             = "MBCircularProgressBar"
-  s.version          = "0.1.1"
-  s.summary          = "a beautiful circular animatable progress bar that uses IBDesignable"
+  s.version          = "0.1.2"
+  s.summary          = "a circular animatable & IB highly customizable progress bar"
   s.description      = <<-DESC
-            a beautiful circular animatable progress bar that uses IBDesignable and custom core graphics drawing
+a circular animatable & Interface Builder highly customizable progress bar
                        DESC
   s.homepage         = "https://github.com/matibot/MBCircularProgressBar"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
