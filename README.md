@@ -1,12 +1,11 @@
 # MBCircularProgressBar
 
-[![CI Status](http://img.shields.io/travis/Mati Bot/MBCircularProgressBar.svg?style=flat)](https://travis-ci.org/Mati Bot/MBCircularProgressBar)
 [![Version](https://img.shields.io/cocoapods/v/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
 [![License](https://img.shields.io/cocoapods/l/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
 [![Platform](https://img.shields.io/cocoapods/p/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
 
-
-![alt tag](https://raw.github.com/matibot/MBCircularProgressBar/master/Readme/MBCircularProgressBar.gif)
+![](https://raw.github.com/matibot/MBCircularProgressBar/master/Readme/example.jpg)
+![](https://raw.github.com/matibot/MBCircularProgressBar/master/Readme/MBCircularProgressBar.gif)
 
 ## Usage
 
