@@ -25,6 +25,7 @@
 
 -(void)setPercent:(CGFloat)percent{
     self.progressLayer.percent = percent;
+    [self.layer setNeedsDisplay];
 }
 
 -(CGFloat)percent{
