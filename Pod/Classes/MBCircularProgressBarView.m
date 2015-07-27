@@ -113,7 +113,7 @@
 }
 
 -(CGLineCap)safeCapType:(NSInteger)type{
-    if(0 <= type && type <= 2){
+    if(kCGLineCapButt <= type && type <= kCGLineCapSquare){
         return (CGLineCap)type;
     }
     
