@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "MBCircularProgressBar"
-  s.version          = "0.1.5"
+  s.version          = "0.2"
   s.summary          = "a circular animatable & IB highly customizable progress bar"
   s.description      = <<-DESC
 a circular animatable & Interface Builder highly customizable progress bar

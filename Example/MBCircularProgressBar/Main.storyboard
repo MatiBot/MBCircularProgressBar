@@ -24,9 +24,6 @@
                                     <constraint firstAttribute="height" constant="200" id="BDy-UV-7Ph"/>
                                     <constraint firstAttribute="width" constant="200" id="Tgw-oq-C05"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="unitString" value=" Assets"/>
-                                </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0W-8X-9Su">
                                 <rect key="frame" x="272" y="562" width="57" height="30"/>
