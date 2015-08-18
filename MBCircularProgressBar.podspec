@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 a circular animatable & Interface Builder highly customizable progress bar
                        DESC
   s.homepage         = "https://github.com/matibot/MBCircularProgressBar"
-  s.screenshots     = "https://raw.github.com/matibot/MBCircularProgressBar/master/Readme/example.jpg", "https://raw.github.com/matibot/MBCircularProgressBar/master/Readme/MBCircularProgressBar.gif"
+  s.screenshots     = "https://raw.github.com/matibot/MBCircularProgressBar/master/Readme/example.png", "https://raw.github.com/matibot/MBCircularProgressBar/master/Readme/MBCircularProgressBar.gif"
   s.license          = 'MIT'
   s.author           = { "Mati Bot" => "matibot@gmail.com" }
   s.source           = { :git => "https://github.com/matibot/MBCircularProgressBar.git", :tag => s.version.to_s }
