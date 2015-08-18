@@ -12,7 +12,11 @@
 #import "MBCircularProgressBarLayer.h"
 
 @implementation MBCircularProgressBarLayer
-@dynamic percent;
+@dynamic value;
+@dynamic maxValue;
+@dynamic valueFontSize;
+@dynamic unitString;
+@dynamic unitFontSize;
 @dynamic progressLineWidth;
 @dynamic progressColor;
 @dynamic progressStrokeColor;
@@ -23,7 +27,6 @@
 @dynamic progressCapType;
 @dynamic fontColor;
 @dynamic progressRotationAngle;
-
 
 #pragma mark - Drawing
 
@@ -71,7 +74,7 @@
     CGPathAddArc(arc, NULL,
                  rectSize.width/2, rectSize.height/2,
                  MIN(rectSize.width,rectSize.height)/2 - self.progressLineWidth,
-                 (self.progressAngle/100.f)*M_PI-((self.progressRotationAngle/100.f)*2.f+0.5)*M_PI-(2.f*M_PI)*(self.progressAngle/100.f)*(100.f-self.percent)/100.f,
+                 (self.progressAngle/100.f)*M_PI-((self.progressRotationAngle/100.f)*2.f+0.5)*M_PI-(2.f*M_PI)*(self.progressAngle/100.f)*(100.f-100.f*self.value/self.maxValue)/100.f,
                  -(self.progressAngle/100.f)*M_PI-((self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
                  YES);
     
@@ -94,15 +97,25 @@
     NSMutableParagraphStyle* textStyle = NSMutableParagraphStyle.defaultParagraphStyle.mutableCopy;
     textStyle.alignment = NSTextAlignmentLeft;
     
-    NSDictionary* percentFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: @"HelveticaNeue-Thin" size:rectSize.height/5], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+    NSDictionary* valueFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: @"HelveticaNeue-Thin" size:self.valueFontSize == -1 ? rectSize.height/5 : self.valueFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
     
-    NSString* percentText = [NSString stringWithFormat:@"%.f%%",self.percent];
+    NSDictionary* unitFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: @"HelveticaNeue-Thin" size:self.unitFontSize == -1 ? rectSize.height/7 : self.unitFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
     
-    CGSize percentSize = [percentText sizeWithAttributes:percentFontAttributes];
+    NSMutableAttributedString* text = [NSMutableAttributedString new];
+    
+    NSAttributedString* value =
+    [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%.f", self.value] attributes:valueFontAttributes];
+    
+    NSAttributedString* unit =
+    [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", self.unitString] attributes:unitFontAttributes];
+    
+    [text appendAttributedString:value];
+    [text appendAttributedString:unit];
+    
+    CGSize percentSize = [text size];
   
-    [percentText drawAtPoint:CGPointMake(rectSize.width/2-percentSize.width/2,
-                                         rectSize.height/2-percentSize.height/2)
-              withAttributes:percentFontAttributes];
+    [text drawAtPoint:CGPointMake(rectSize.width/2-percentSize.width/2,
+                                         rectSize.height/2-percentSize.height/2)];
     
 }
 

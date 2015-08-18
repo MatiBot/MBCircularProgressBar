@@ -11,7 +11,12 @@
 IB_DESIGNABLE
 @interface MBCircularProgressBarView : UIView
 
-@property (nonatomic) IBInspectable CGFloat percent;
+@property (nonatomic) IBInspectable CGFloat value;
+@property (nonatomic) IBInspectable CGFloat maxValue;
+
+@property (nonatomic) IBInspectable CGFloat valueFontSize;
+@property (nonatomic) IBInspectable CGFloat unitFontSize;
+@property (nonatomic) IBInspectable NSString* unitString;
 @property (nonatomic) IBInspectable UIColor* fontColor;
 
 @property (nonatomic) IBInspectable CGFloat progressRotationAngle;

@@ -12,7 +12,11 @@
 
 @property (nonatomic,assign) CGFloat progressAngle;
 @property (nonatomic,assign) CGFloat progressRotationAngle;
-@property (nonatomic,assign) CGFloat percent;
+@property (nonatomic,assign) CGFloat value;
+@property (nonatomic,assign) CGFloat maxValue;
+@property (nonatomic,assign) CGFloat valueFontSize;
+@property (nonatomic,assign) CGFloat unitFontSize;
+@property (nonatomic,strong) NSString* unitString;
 @property (nonatomic,strong) UIColor* fontColor;
 
 @property (nonatomic,assign) CGFloat progressLineWidth;
