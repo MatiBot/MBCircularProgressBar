@@ -51,12 +51,12 @@ self.progressBar.value = 55.f;
 In case you want to change the duration of the animation, you would need to set a `CATransaction`
 
 ```objc
-  [CATransaction begin];
-  [CATransaction setAnimationDuration:5];
+[CATransaction begin];
+[CATransaction setAnimationDuration:5];
     
-  self.progressBar.value = 55.f;
+self.progressBar.value = 55.f;
     
-  [CATransaction commit];
+[CATransaction commit];
 ```
 
 ## References
