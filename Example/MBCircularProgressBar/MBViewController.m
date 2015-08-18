@@ -25,7 +25,7 @@
     [CATransaction begin];
     [CATransaction setAnimationDuration:1];
     
-    self.progressBar.percent = 100.f - self.progressBar.percent;
+    self.progressBar.value = 100.f - self.progressBar.value;
     
     [CATransaction commit];
 }

@@ -44,13 +44,18 @@
 }
 
 - (void)drawEmptyBar:(CGSize)rectSize context:(CGContextRef)c{
+    
+    if(self.emptyLineWidth <= 0){
+        return;
+    }
+    
     CGMutablePathRef arc = CGPathCreateMutable();
     
     CGPathAddArc(arc, NULL,
                  rectSize.width/2, rectSize.height/2,
                  MIN(rectSize.width,rectSize.height)/2 - self.progressLineWidth,
-                 (self.progressAngle/100.f)*M_PI-((self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
-                 -(self.progressAngle/100.f)*M_PI-((self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
+                 (self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
+                 -(self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
                  YES);
     
 
@@ -69,13 +74,17 @@
 }
 
 - (void)drawProgressBar:(CGSize)rectSize context:(CGContextRef)c{
+    if(self.progressLineWidth <= 0){
+        return;
+    }
+    
     CGMutablePathRef arc = CGPathCreateMutable();
     
     CGPathAddArc(arc, NULL,
                  rectSize.width/2, rectSize.height/2,
                  MIN(rectSize.width,rectSize.height)/2 - self.progressLineWidth,
-                 (self.progressAngle/100.f)*M_PI-((self.progressRotationAngle/100.f)*2.f+0.5)*M_PI-(2.f*M_PI)*(self.progressAngle/100.f)*(100.f-100.f*self.value/self.maxValue)/100.f,
-                 -(self.progressAngle/100.f)*M_PI-((self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
+                 (self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI-(2.f*M_PI)*(self.progressAngle/100.f)*(100.f-100.f*self.value/self.maxValue)/100.f,
+                 -(self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
                  YES);
     
     CGPathRef strokedArc =
@@ -122,7 +131,7 @@
 #pragma mark - Override methods to support animations
 
 + (BOOL)needsDisplayForKey:(NSString *)key {
-    if ([key isEqualToString:@"percent"]) {
+    if ([key isEqualToString:@"value"]) {
         return YES;
     }
     return [super needsDisplayForKey:key];
@@ -130,11 +139,11 @@
 
 - (id<CAAction>)actionForKey:(NSString *)event{
     if ([self presentationLayer] != nil) {
-        if ([event isEqualToString:@"percent"]) {
+        if ([event isEqualToString:@"value"]) {
             CABasicAnimation *anim = [CABasicAnimation
-                                      animationWithKeyPath:@"percent"];
+                                      animationWithKeyPath:@"value"];
             anim.fromValue = [[self presentationLayer]
-                              valueForKey:@"percent"];
+                              valueForKey:@"value"];
             anim.duration = [[CATransaction valueForKey:@"animationDuration"] floatValue];
             return anim;
         }
