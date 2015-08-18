@@ -4,8 +4,8 @@
 [![License](https://img.shields.io/cocoapods/l/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
 [![Platform](https://img.shields.io/cocoapods/p/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
 
-![](https://raw.github.com/matibot/MBCircularProgressBar/master/Readme/example.jpg)
-![](https://raw.github.com/matibot/MBCircularProgressBar/master/Readme/MBCircularProgressBar.gif)
+![](https://raw.github.com/matibot/MBCircularProgressBar/0.2/Readme/example.png)
+![](https://raw.github.com/matibot/MBCircularProgressBar/0.2/Readme/MBCircularProgressBar.gif)
 
 ## Usage
 
