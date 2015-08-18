@@ -61,7 +61,7 @@ self.progressBar.value = 55.f;
 
 ## References
 
-[[iOS][Swift] MBCircularProgressBar で円形のプログレスバーを実現](http://dev.classmethod.jp/smartphone/mbcircularprogressbar/)  by [@TokihikoTamiya](https://twitter.com/tokihikotamiya) (in Japanese)
+[[iOS][Swift] MBCircularProgressBar で円形のプログレスバーを実現](http://dev.classmethod.jp/smartphone/mbcircularprogressbar/)  by [@cocominap](https://twitter.com/cocominap) (in Japanese)
 
 ## Author
 
