@@ -11,26 +11,26 @@
 IB_DESIGNABLE
 @interface MBCircularProgressBarView : UIView
 
-@property (nonatomic) IBInspectable CGFloat value;
-@property (nonatomic) IBInspectable CGFloat maxValue;
+@property (nonatomic,assign) IBInspectable CGFloat value;
+@property (nonatomic,assign) IBInspectable CGFloat maxValue;
 
-@property (nonatomic) IBInspectable CGFloat valueFontSize;
-@property (nonatomic) IBInspectable CGFloat unitFontSize;
-@property (nonatomic) IBInspectable NSString* unitString;
-@property (nonatomic) IBInspectable UIColor* fontColor;
+@property (nonatomic,assign) IBInspectable CGFloat valueFontSize;
+@property (nonatomic,assign) IBInspectable CGFloat unitFontSize;
+@property (nonatomic,copy) IBInspectable NSString* unitString;
+@property (nonatomic,strong) IBInspectable UIColor* fontColor;
 
-@property (nonatomic) IBInspectable CGFloat progressRotationAngle;
-@property (nonatomic) IBInspectable CGFloat progressAngle;
+@property (nonatomic,assign) IBInspectable CGFloat progressRotationAngle;
+@property (nonatomic,assign) IBInspectable CGFloat progressAngle;
 
-@property (nonatomic) IBInspectable CGFloat progressLineWidth;
-@property (nonatomic) IBInspectable UIColor* progressColor;
-@property (nonatomic) IBInspectable UIColor* progressStrokeColor;
+@property (nonatomic,assign) IBInspectable CGFloat progressLineWidth;
+@property (nonatomic,strong) IBInspectable UIColor* progressColor;
+@property (nonatomic,strong) IBInspectable UIColor* progressStrokeColor;
 //CGLineCap
-@property (nonatomic) IBInspectable NSInteger progressCapType;
+@property (nonatomic,assign) IBInspectable NSInteger progressCapType;
 
-@property (nonatomic) IBInspectable CGFloat emptyLineWidth;
-@property (nonatomic) IBInspectable UIColor* emptyLineColor;
+@property (nonatomic,assign) IBInspectable CGFloat emptyLineWidth;
+@property (nonatomic,strong) IBInspectable UIColor* emptyLineColor;
 //CGLineCap
-@property (nonatomic) IBInspectable NSInteger emptyCapType;
+@property (nonatomic,assign) IBInspectable NSInteger emptyCapType;
 
 @end
