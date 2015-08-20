@@ -55,6 +55,10 @@
     [self setProgressAngle:80.f];
     [self setUnitFontSize:-1];
     [self setValueFontSize:-1];
+    [self setValueDecimalFontSize:-1];
+    [self setDecimalPlaces:0];
+    [self setValueFontName:@"HelveticaNeue-Thin"];
+    [self setUnitFontName:@"HelveticaNeue-Thin"];
 }
 
 #pragma mark - Getters and Setters for layer properties
@@ -197,6 +201,44 @@
     return kCGLineCapRound;
 }
 
+-(void)setDecimalPlaces:(NSInteger)decimalPlaces{
+  self.progressLayer.decimalPlaces = decimalPlaces;
+}
+-(NSInteger)decimalPlaces{
+  return self.progressLayer.decimalPlaces;
+}
+
+-(void)setValueDecimalFontSize:(CGFloat)valueDecimalFontSize{
+  self.progressLayer.valueDecimalFontSize = valueDecimalFontSize;
+}
+
+-(CGFloat)valueDecimalFontSize{
+  return self.progressLayer.valueDecimalFontSize;
+}
+
+-(void)setUnitFontName:(NSString *)unitFontName{
+  self.progressLayer.unitFontName = unitFontName;
+}
+
+-(NSString *)unitFontName{
+  return self.progressLayer.unitFontName;
+}
+
+-(void)setValueFontName:(NSString *)valueFontName{
+  self.progressLayer.valueFontName = valueFontName;
+}
+
+-(NSString *)valueFontName{
+  return self.progressLayer.valueFontName;
+}
+
+-(void)setShowUnitString:(BOOL)showUnitString{
+  self.progressLayer.showUnitString = showUnitString;
+}
+
+-(BOOL)showUnitString{
+  return self.progressLayer.showUnitString;
+}
 
 #pragma mark - CALayer
 
