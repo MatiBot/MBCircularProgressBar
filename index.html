@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>MBCircularProgressBar by matibot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">MBCircularProgressBar</h1>
+      <h2 class="project-tagline">A circular, animatable &amp; highly customizable progress bar from the Interface Builder (Objective-C)</h2>
+      <a href="https://github.com/matibot/MBCircularProgressBar" class="btn">View on GitHub</a>
+      <a href="https://github.com/matibot/MBCircularProgressBar/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/matibot/MBCircularProgressBar/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="mbcircularprogressbar" class="anchor" href="#mbcircularprogressbar" aria-hidden="true"><span class="octicon octicon-link"></span></a>MBCircularProgressBar</h1>
+
+<p><a href="http://cocoapods.org/pods/MBCircularProgressBar"><img src="https://img.shields.io/cocoapods/v/MBCircularProgressBar.svg?style=flat" alt="Version"></a>
+<a href="http://cocoapods.org/pods/MBCircularProgressBar"><img src="https://img.shields.io/cocoapods/l/MBCircularProgressBar.svg?style=flat" alt="License"></a>
+<a href="http://cocoapods.org/pods/MBCircularProgressBar"><img src="https://img.shields.io/cocoapods/p/MBCircularProgressBar.svg?style=flat" alt="Platform"></a></p>
+
+<p><img src="https://raw.github.com/matibot/MBCircularProgressBar/0.2/Readme/example.png" alt="">
+<img src="https://raw.github.com/matibot/MBCircularProgressBar/0.2/Readme/MBCircularProgressBar.gif" alt=""></p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>To run the example project, clone the repo, and run <code>pod install</code> from the Example directory first.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>MBCircularProgressBar is available through <a href="http://cocoapods.org">CocoaPods</a>. To install
+it, simply add the following line to your Podfile:</p>
+
+<div class="highlight highlight-ruby"><pre>pod <span class="pl-s"><span class="pl-pds">"</span>MBCircularProgressBar<span class="pl-pds">"</span></span></pre></div>
+
+<h2>
+<a id="properties" class="anchor" href="#properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Properties</h2>
+
+<table>
+<thead>
+<tr>
+<th>Property name</th>
+<th>Property type</th>
+<th>Description</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>CGFloat</td>
+<td>The value to be displayed in the center</td>
+<td>[0,maxValue]</td>
+</tr>
+<tr>
+<td>maxValue</td>
+<td>CGFloat</td>
+<td>The maximum possible value, used to calculate the progress (value/maxValue)</td>
+<td>[0,∞)</td>
+</tr>
+<tr>
+<td>valueFontSize</td>
+<td>CGFloat</td>
+<td>The font size of the value text</td>
+<td>[0,∞)</td>
+</tr>
+<tr>
+<td>unitFontSize</td>
+<td>CGFloat</td>
+<td>The font size of the unit text</td>
+<td>[0,∞)</td>
+</tr>
+<tr>
+<td>unitString</td>
+<td>NSString</td>
+<td>The string that represents the units, usually %</td>
+<td></td>
+</tr>
+<tr>
+<td>fontColor</td>
+<td>UIColor</td>
+<td>The color of the value and unit text</td>
+<td></td>
+</tr>
+<tr>
+<td>progressRotationAngle</td>
+<td>CGFloat</td>
+<td>Progress bar rotation (Clockewise)</td>
+<td>[0,100]</td>
+</tr>
+<tr>
+<td>progressAngle</td>
+<td>CGFloat</td>
+<td>Set a partial angle for the progress bar</td>
+<td>[0,100]</td>
+</tr>
+<tr>
+<td>progressLineWidth</td>
+<td>CGFloat</td>
+<td>The width of the progress bar (user space units)</td>
+<td>[0,∞)</td>
+</tr>
+<tr>
+<td>progressColor</td>
+<td>UIColor</td>
+<td>The color of the progress bar</td>
+<td></td>
+</tr>
+<tr>
+<td>progressStrokeColor</td>
+<td>UIColor</td>
+<td>The color of the progress bar frame</td>
+<td></td>
+</tr>
+<tr>
+<td>progressCapType</td>
+<td>NSInteger</td>
+<td>The shape of the progress bar cap</td>
+<td>{kCGLineCapButt=0, kCGLineCapRound=1, kCGLineCapSquare=2}</td>
+</tr>
+<tr>
+<td>emptyLineWidth</td>
+<td>CGFloat</td>
+<td>The width of the background bar (user space units)</td>
+<td>[0,∞)</td>
+</tr>
+<tr>
+<td>emptyLineColor</td>
+<td>CGFloat</td>
+<td>The color of the background bar</td>
+<td></td>
+</tr>
+<tr>
+<td>emptyCapType</td>
+<td>CGFloat</td>
+<td>The shape of the background bar cap</td>
+<td>{kCGLineCapButt=0, kCGLineCapRound=1, kCGLineCapSquare=2}</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="animation" class="anchor" href="#animation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Animation</h2>
+
+<p>In order to animate a change in the progress bar you just need to change the <code>value</code> property</p>
+
+<div class="highlight highlight-objc"><pre>self.progressBar.value = <span class="pl-c1">55</span>.f;</pre></div>
+
+<p>In case you want to change the duration of the animation, you would need to set a <code>CATransaction</code></p>
+
+<div class="highlight highlight-objc"><pre>[CATransaction <span class="pl-c1">begin</span>];
+[CATransaction <span class="pl-c1">setAnimationDuration:</span><span class="pl-c1">5</span>];
+
+self.progressBar.value = <span class="pl-c1">55</span>.f;
+
+[CATransaction <span class="pl-c1">commit</span>];</pre></div>
+
+<h2>
+<a id="references" class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h2>
+
+<p><a href="http://dev.classmethod.jp/smartphone/mbcircularprogressbar/">[iOS][Swift] MBCircularProgressBar で円形のプログレスバーを実現</a>  by <a href="https://twitter.com/cocominap">@cocominap</a> (in Japanese)</p>
+
+<h2>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h2>
+
+<p>Mati Bot, <a href="mailto:matibot@gmail.com">matibot@gmail.com</a>, <a href="https://twitter.com/b0tnik">@b0tnik</a></p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>MBCircularProgressBar is available under the MIT license. See the LICENSE file for more info.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/matibot/MBCircularProgressBar">MBCircularProgressBar</a> is maintained by <a href="https://github.com/matibot">matibot</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-66611253-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
