@@ -11,6 +11,7 @@
 IB_DESIGNABLE
 @interface MBCircularProgressBarView : UIView
 
+@property (nonatomic,assign) IBInspectable BOOL       showValueString;
 @property (nonatomic,assign) IBInspectable CGFloat    value;
 @property (nonatomic,assign) IBInspectable CGFloat    maxValue;
 @property (nonatomic,assign) IBInspectable NSInteger  decimalPlaces;

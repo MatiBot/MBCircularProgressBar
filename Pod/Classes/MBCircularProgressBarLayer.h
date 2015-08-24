@@ -33,5 +33,6 @@
 @property (nonatomic,copy)    NSString  *unitFontName;
 @property (nonatomic,copy)    NSString  *valueFontName;
 @property (nonatomic,assign)  BOOL      showUnitString;
+@property (nonatomic,assign)  BOOL      showValueString;
 
 @end

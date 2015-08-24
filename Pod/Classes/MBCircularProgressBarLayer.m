@@ -32,6 +32,7 @@
 @dynamic unitFontName;
 @dynamic valueFontName;
 @dynamic showUnitString;
+@dynamic showValueString;
 
 
 #pragma mark - Drawing
@@ -44,7 +45,10 @@
     CGSize size = CGRectIntegral(CGContextGetClipBoundingBox(context)).size;
     [self drawEmptyBar:size context:context];
     [self drawProgressBar:size context:context];
-    [self drawText:size context:context];
+  
+    if (self.showValueString){
+      [self drawText:size context:context];
+    }
     
     UIGraphicsPopContext();
 }

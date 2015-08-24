@@ -40,7 +40,7 @@
 -(void)initView:(CGRect)frame{
     //Without setting the content scale factor the layer would be pixelated
     [self setContentScaleFactor:[[UIScreen mainScreen] scale]];
-    
+  
     [self setUnitString:@"%"];
     [self setValue:0.f];
     [self setMaxValue:100.f];
@@ -62,6 +62,15 @@
 }
 
 #pragma mark - Getters and Setters for layer properties
+
+-(void)setShowValueString:(BOOL)showValueString{
+  self.progressLayer.showValueString = showValueString;
+  [self.layer setNeedsDisplay];
+}
+
+-(BOOL)showValueString{
+  return self.progressLayer.showValueString;
+}
 
 -(void)setValue:(CGFloat)value{
     self.progressLayer.value = value;
