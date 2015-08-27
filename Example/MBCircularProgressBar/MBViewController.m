@@ -12,6 +12,7 @@
 @interface MBViewController ()
 
 @property (weak, nonatomic) IBOutlet MBCircularProgressBarView *progressBar;
+@property (weak, nonatomic) IBOutlet UISwitch *animatedSwitch;
 
 @end
 
@@ -22,11 +23,13 @@
 }
 
 - (IBAction)animate:(UIButton *)sender {
-    [CATransaction begin];
-    [CATransaction setAnimationDuration:1];
-    
-    self.progressBar.value = 100.f - self.progressBar.value;
-  
-    [CATransaction commit];
+    if(self.animatedSwitch.on){
+        [self.progressBar setValue:100.f - self.progressBar.value
+                          animateWithDuration:1];
+    }else{
+        self.progressBar.value = 100.f - self.progressBar.value;
+    }
 }
+
+
 @end

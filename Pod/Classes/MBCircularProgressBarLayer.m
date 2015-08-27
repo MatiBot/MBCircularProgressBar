@@ -118,7 +118,9 @@
   NSMutableParagraphStyle* textStyle = NSMutableParagraphStyle.defaultParagraphStyle.mutableCopy;
   textStyle.alignment = NSTextAlignmentLeft;
   
-  NSDictionary* valueFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:self.valueFontSize == -1 ? rectSize.height/5 : self.valueFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+  CGFloat valueFontSize = self.valueFontSize == -1 ? rectSize.height/5 : self.valueFontSize;
+  
+  NSDictionary* valueFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:valueFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
   
   NSMutableAttributedString *text = [NSMutableAttributedString new];
   
@@ -131,7 +133,7 @@
   // set the decimal font size
   NSUInteger decimalLocation = [text.string rangeOfString:@"."].location;
   if (decimalLocation != NSNotFound){
-    NSDictionary* valueDecimalFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:self.valueDecimalFontSize == -1 ? self.valueFontSize : self.valueDecimalFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+    NSDictionary* valueDecimalFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:self.valueDecimalFontSize == -1 ? valueFontSize : self.valueDecimalFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
     NSRange decimalRange = NSMakeRange(decimalLocation, text.length - decimalLocation);
     [text setAttributes:valueDecimalFontAttributes range:decimalRange];
   }
@@ -163,12 +165,12 @@
 
 - (id<CAAction>)actionForKey:(NSString *)event{
     if ([self presentationLayer] != nil) {
-        if ([event isEqualToString:@"value"]) {
+        if ([event isEqualToString:@"value"] && self.animated) {
             CABasicAnimation *anim = [CABasicAnimation
                                       animationWithKeyPath:@"value"];
             anim.fromValue = [[self presentationLayer]
                               valueForKey:@"value"];
-            anim.duration = [[CATransaction valueForKey:@"animationDuration"] floatValue];
+            anim.duration = self.animationDuration;
             return anim;
         }
     }
