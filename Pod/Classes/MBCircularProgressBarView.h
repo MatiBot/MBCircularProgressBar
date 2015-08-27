@@ -11,26 +11,35 @@
 IB_DESIGNABLE
 @interface MBCircularProgressBarView : UIView
 
-@property (nonatomic,assign) IBInspectable CGFloat value;
-@property (nonatomic,assign) IBInspectable CGFloat maxValue;
+@property (nonatomic,assign) IBInspectable BOOL       showValueString;
+@property (nonatomic,assign) IBInspectable CGFloat    value;
+@property (nonatomic,assign) IBInspectable CGFloat    maxValue;
+@property (nonatomic,assign) IBInspectable NSInteger  decimalPlaces;
 
-@property (nonatomic,assign) IBInspectable CGFloat valueFontSize;
-@property (nonatomic,assign) IBInspectable CGFloat unitFontSize;
-@property (nonatomic,copy) IBInspectable NSString* unitString;
-@property (nonatomic,strong) IBInspectable UIColor* fontColor;
+@property (nonatomic,copy)   IBInspectable NSString *valueFontName;
+@property (nonatomic,assign) IBInspectable CGFloat  valueFontSize;
+@property (nonatomic,assign) IBInspectable CGFloat  valueDecimalFontSize;
+
+@property (nonatomic,assign) IBInspectable BOOL     showUnitString;
+@property (nonatomic,copy)   IBInspectable NSString *unitFontName;
+@property (nonatomic,assign) IBInspectable CGFloat  unitFontSize;
+@property (nonatomic,copy)   IBInspectable NSString *unitString;
+
+@property (nonatomic,strong) IBInspectable UIColor  *fontColor;
 
 @property (nonatomic,assign) IBInspectable CGFloat progressRotationAngle;
 @property (nonatomic,assign) IBInspectable CGFloat progressAngle;
 
-@property (nonatomic,assign) IBInspectable CGFloat progressLineWidth;
-@property (nonatomic,strong) IBInspectable UIColor* progressColor;
-@property (nonatomic,strong) IBInspectable UIColor* progressStrokeColor;
+@property (nonatomic,assign) IBInspectable CGFloat  progressLineWidth;
+@property (nonatomic,strong) IBInspectable UIColor  *progressColor;
+@property (nonatomic,strong) IBInspectable UIColor  *progressStrokeColor;
 //CGLineCap
 @property (nonatomic,assign) IBInspectable NSInteger progressCapType;
 
-@property (nonatomic,assign) IBInspectable CGFloat emptyLineWidth;
-@property (nonatomic,strong) IBInspectable UIColor* emptyLineColor;
+@property (nonatomic,assign) IBInspectable CGFloat  emptyLineWidth;
+@property (nonatomic,strong) IBInspectable UIColor  *emptyLineColor;
 //CGLineCap
 @property (nonatomic,assign) IBInspectable NSInteger emptyCapType;
+
 
 @end

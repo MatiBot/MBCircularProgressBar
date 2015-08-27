@@ -40,7 +40,7 @@
 -(void)initView:(CGRect)frame{
     //Without setting the content scale factor the layer would be pixelated
     [self setContentScaleFactor:[[UIScreen mainScreen] scale]];
-    
+  
     [self setUnitString:@"%"];
     [self setValue:0.f];
     [self setMaxValue:100.f];
@@ -55,9 +55,22 @@
     [self setProgressAngle:80.f];
     [self setUnitFontSize:-1];
     [self setValueFontSize:-1];
+    [self setValueDecimalFontSize:-1];
+    [self setDecimalPlaces:0];
+    [self setValueFontName:@"HelveticaNeue-Thin"];
+    [self setUnitFontName:@"HelveticaNeue-Thin"];
 }
 
 #pragma mark - Getters and Setters for layer properties
+
+-(void)setShowValueString:(BOOL)showValueString{
+  self.progressLayer.showValueString = showValueString;
+  [self.layer setNeedsDisplay];
+}
+
+-(BOOL)showValueString{
+  return self.progressLayer.showValueString;
+}
 
 -(void)setValue:(CGFloat)value{
     self.progressLayer.value = value;
@@ -197,6 +210,44 @@
     return kCGLineCapRound;
 }
 
+-(void)setDecimalPlaces:(NSInteger)decimalPlaces{
+  self.progressLayer.decimalPlaces = decimalPlaces;
+}
+-(NSInteger)decimalPlaces{
+  return self.progressLayer.decimalPlaces;
+}
+
+-(void)setValueDecimalFontSize:(CGFloat)valueDecimalFontSize{
+  self.progressLayer.valueDecimalFontSize = valueDecimalFontSize;
+}
+
+-(CGFloat)valueDecimalFontSize{
+  return self.progressLayer.valueDecimalFontSize;
+}
+
+-(void)setUnitFontName:(NSString *)unitFontName{
+  self.progressLayer.unitFontName = unitFontName;
+}
+
+-(NSString *)unitFontName{
+  return self.progressLayer.unitFontName;
+}
+
+-(void)setValueFontName:(NSString *)valueFontName{
+  self.progressLayer.valueFontName = valueFontName;
+}
+
+-(NSString *)valueFontName{
+  return self.progressLayer.valueFontName;
+}
+
+-(void)setShowUnitString:(BOOL)showUnitString{
+  self.progressLayer.showUnitString = showUnitString;
+}
+
+-(BOOL)showUnitString{
+  return self.progressLayer.showUnitString;
+}
 
 #pragma mark - CALayer
 

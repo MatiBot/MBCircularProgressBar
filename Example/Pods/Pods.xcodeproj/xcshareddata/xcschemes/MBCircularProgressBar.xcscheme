@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CF7B6C280D2D9A0C3B041508"
+               BlueprintIdentifier = "B6498CA070DF8DC4EB142EDB"
                BuildableName = "MBCircularProgressBar.framework"
                BlueprintName = "MBCircularProgressBar"
                ReferencedContainer = "container:Pods.xcodeproj">
