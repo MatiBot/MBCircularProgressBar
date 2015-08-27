@@ -23,7 +23,7 @@ IB_DESIGNABLE
 /* Number of decimal places of the value [0,∞) */
 @property (nonatomic,assign) IBInspectable NSInteger decimalPlaces;
 
-/* The value to be displayed in the center */
+/* The name of the font of the value string*/
 @property (nonatomic,copy)   IBInspectable NSString  *valueFontName;
 
 /* The font size of the value text	[0,∞) */
@@ -35,7 +35,7 @@ IB_DESIGNABLE
 /* Should show unit screen */
 @property (nonatomic,assign) IBInspectable BOOL      showUnitString;
 
-/* The font size of the unit text	[0,∞) */
+/* The name of the font of the unit string */
 @property (nonatomic,copy)   IBInspectable NSString  *unitFontName;
 
 /* The font size of the unit text	[0,∞) */
