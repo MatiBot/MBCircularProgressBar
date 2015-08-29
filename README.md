@@ -47,7 +47,7 @@ emptyCapType | CGFloat | The shape of the background bar cap | {kCGLineCapButt=0
 
 ## Animation
 
-In order to animate a change in the progress bar you should use the `setValue:animateWithDuration` method
+In order to animate a change in the progress bar you should use the `setValue:animateWithDuration:` method
 
 ```objc
 [self.progressBar setValue:55.f animateWithDuration:1];
