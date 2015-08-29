@@ -18,7 +18,7 @@ a circular animatable & Interface Builder highly customizable progress bar
   s.screenshots     = "https://raw.github.com/matibot/MBCircularProgressBar/master/Readme/example.png", "https://raw.github.com/matibot/MBCircularProgressBar/master/Readme/MBCircularProgressBar.gif"
   s.license          = 'MIT'
   s.author           = { "Mati Bot" => "matibot@gmail.com" }
-  s.source           = { :git => "https://github.com/getdrop/MBCircularProgressBar.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/matibot/MBCircularProgressBar.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/@b0tnik'
 
   s.platform     = :ios, '7.0'
