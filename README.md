@@ -1,5 +1,7 @@
 # MBCircularProgressBar
 
+[![Join the chat at https://gitter.im/matibot/MBCircularProgressBar](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/matibot/MBCircularProgressBar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Version](https://img.shields.io/cocoapods/v/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
 [![License](https://img.shields.io/cocoapods/l/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
 [![Platform](https://img.shields.io/cocoapods/p/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
