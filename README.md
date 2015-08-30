@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/cocoapods/v/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
 [![License](https://img.shields.io/cocoapods/l/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
 [![Platform](https://img.shields.io/cocoapods/p/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
-[![Analytics](https://ga-beacon.appspot.com/UA-66922648-1/matibot/MBCircularProgressBar)](https://github.com/matibot/MBCircularProgressBar)
+[![Analytics](https://ga-beacon.appspot.com/UA-66922648-1/matibot/MBCircularProgressBar?pixel)](https://github.com/matibot/MBCircularProgressBar)
 
 ![](https://raw.github.com/matibot/MBCircularProgressBar/0.2/Readme/example.png)
 ![](https://raw.github.com/matibot/MBCircularProgressBar/0.2/Readme/MBCircularProgressBar.gif)
