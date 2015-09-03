@@ -58,6 +58,7 @@
     [self setValueDecimalFontSize:-1];
     [self setDecimalPlaces:0];
     [self setShowUnitString:YES];
+    [self setShowValueString:YES];
     [self setValueFontName:@"HelveticaNeue-Thin"];
     [self setUnitFontName:@"HelveticaNeue-Thin"];
 }
