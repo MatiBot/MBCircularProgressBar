@@ -81,6 +81,9 @@
     CGContextSetStrokeColorWithColor(c, self.emptyLineColor.CGColor);
     CGContextSetFillColorWithColor(c, self.emptyLineColor.CGColor);
     CGContextDrawPath(c, kCGPathFillStroke);
+    
+    CGPathRelease(arc);
+    CGPathRelease(strokedArc);
 }
 
 - (void)drawProgressBar:(CGSize)rectSize context:(CGContextRef)c{
@@ -109,6 +112,9 @@
     CGContextSetFillColorWithColor(c, self.progressColor.CGColor);
     CGContextSetStrokeColorWithColor(c, self.progressStrokeColor.CGColor);
     CGContextDrawPath(c, kCGPathFillStroke);
+    
+    CGPathRelease(arc);
+    CGPathRelease(strokedArc);
 }
 
 - (void)drawText:(CGSize)rectSize context:(CGContextRef)c
