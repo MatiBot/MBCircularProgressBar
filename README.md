@@ -22,7 +22,7 @@ MBCircularProgressBar is available through [CocoaPods](http://cocoapods.org).
 
 To install it, simply add the following lines to your Podfile:
 
-Add this line to the begining of your Podfile in order to support @IBDesignable. More info [here](http://blog.cocoapods.org/CocoaPods-0.36/) (Credits to: [@StevenMasini](https://github.com/StevenMasini)
+Add this line to the begining of your Podfile in order to support @IBDesignable. More info [here](http://blog.cocoapods.org/CocoaPods-0.36/) (Thanks to: [@StevenMasini](https://github.com/StevenMasini))
 
 ```ruby
 use_frameworks!
