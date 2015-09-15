@@ -12,7 +12,7 @@ If you use MBCircularProgressBar, please tell me and I will add your app here.
 
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo, and run `pod update` from the Example directory first.
 
 ## Installation
 
