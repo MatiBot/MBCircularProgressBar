@@ -14,6 +14,8 @@
 @property (nonatomic,assign) CGFloat  progressRotationAngle;
 @property (nonatomic,assign) CGFloat  value;
 @property (nonatomic,assign) CGFloat  maxValue;
+@property (nonatomic,assign) NSTimeInterval  animationDuration;
+@property (nonatomic,assign) BOOL  animated;
 @property (nonatomic,assign) CGFloat  valueFontSize;
 @property (nonatomic,assign) CGFloat  unitFontSize;
 @property (nonatomic,copy)   NSString *unitString;
@@ -33,5 +35,6 @@
 @property (nonatomic,copy)    NSString  *unitFontName;
 @property (nonatomic,copy)    NSString  *valueFontName;
 @property (nonatomic,assign)  BOOL      showUnitString;
+@property (nonatomic,assign)  BOOL      showValueString;
 
 @end

@@ -32,6 +32,7 @@
 @dynamic unitFontName;
 @dynamic valueFontName;
 @dynamic showUnitString;
+@dynamic showValueString;
 
 
 #pragma mark - Drawing
@@ -44,7 +45,10 @@
     CGSize size = CGRectIntegral(CGContextGetClipBoundingBox(context)).size;
     [self drawEmptyBar:size context:context];
     [self drawProgressBar:size context:context];
-    [self drawText:size context:context];
+  
+    if (self.showValueString){
+      [self drawText:size context:context];
+    }
     
     UIGraphicsPopContext();
 }
@@ -77,6 +81,9 @@
     CGContextSetStrokeColorWithColor(c, self.emptyLineColor.CGColor);
     CGContextSetFillColorWithColor(c, self.emptyLineColor.CGColor);
     CGContextDrawPath(c, kCGPathFillStroke);
+    
+    CGPathRelease(arc);
+    CGPathRelease(strokedArc);
 }
 
 - (void)drawProgressBar:(CGSize)rectSize context:(CGContextRef)c{
@@ -105,6 +112,9 @@
     CGContextSetFillColorWithColor(c, self.progressColor.CGColor);
     CGContextSetStrokeColorWithColor(c, self.progressStrokeColor.CGColor);
     CGContextDrawPath(c, kCGPathFillStroke);
+    
+    CGPathRelease(arc);
+    CGPathRelease(strokedArc);
 }
 
 - (void)drawText:(CGSize)rectSize context:(CGContextRef)c
@@ -114,7 +124,9 @@
   NSMutableParagraphStyle* textStyle = NSMutableParagraphStyle.defaultParagraphStyle.mutableCopy;
   textStyle.alignment = NSTextAlignmentLeft;
   
-  NSDictionary* valueFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:self.valueFontSize == -1 ? rectSize.height/5 : self.valueFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+  CGFloat valueFontSize = self.valueFontSize == -1 ? rectSize.height/5 : self.valueFontSize;
+  
+  NSDictionary* valueFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:valueFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
   
   NSMutableAttributedString *text = [NSMutableAttributedString new];
   
@@ -127,7 +139,7 @@
   // set the decimal font size
   NSUInteger decimalLocation = [text.string rangeOfString:@"."].location;
   if (decimalLocation != NSNotFound){
-    NSDictionary* valueDecimalFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:self.valueDecimalFontSize == -1 ? self.valueFontSize : self.valueDecimalFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+    NSDictionary* valueDecimalFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:self.valueDecimalFontSize == -1 ? valueFontSize : self.valueDecimalFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
     NSRange decimalRange = NSMakeRange(decimalLocation, text.length - decimalLocation);
     [text setAttributes:valueDecimalFontAttributes range:decimalRange];
   }
@@ -159,12 +171,12 @@
 
 - (id<CAAction>)actionForKey:(NSString *)event{
     if ([self presentationLayer] != nil) {
-        if ([event isEqualToString:@"value"]) {
+        if ([event isEqualToString:@"value"] && self.animated) {
             CABasicAnimation *anim = [CABasicAnimation
                                       animationWithKeyPath:@"value"];
             anim.fromValue = [[self presentationLayer]
                               valueForKey:@"value"];
-            anim.duration = [[CATransaction valueForKey:@"animationDuration"] floatValue];
+            anim.duration = self.animationDuration;
             return anim;
         }
     }

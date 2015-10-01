@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0Y6-NN-x5f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F6a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0Y6-NN-x5f">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -25,46 +25,56 @@
                                     <constraint firstAttribute="width" constant="200" id="Tgw-oq-C05"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="progressCapType">
-                                        <integer key="value" value="0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="progressRotationAngle">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="value">
-                                        <real key="value" value="20"/>
+                                        <real key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0W-8X-9Su">
-                                <rect key="frame" x="272" y="562" width="57" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRH-kQ-Cv7">
+                                <rect key="frame" x="218" y="524" width="165" height="69"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0W-8X-9Su">
+                                        <rect key="frame" x="0.0" y="0.0" width="165" height="36"/>
+                                        <state key="normal" title="Change">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="animate:" destination="0Y6-NN-x5f" eventType="touchUpInside" id="VD3-su-hWZ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Animated" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tef-Vz-kAo">
+                                        <rect key="frame" x="0.0" y="38" width="90" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K83-We-8cZ">
+                                        <rect key="frame" x="116" y="38" width="51" height="31"/>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="hEE-2u-Nw7"/>
-                                    <constraint firstAttribute="width" constant="57" id="oqb-Ra-tbt"/>
+                                    <constraint firstAttribute="width" constant="165" id="Pel-SM-PBx"/>
+                                    <constraint firstAttribute="height" constant="69" id="plT-Vg-ehB"/>
                                 </constraints>
-                                <state key="normal" title="Animate">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="animate:" destination="0Y6-NN-x5f" eventType="touchUpInside" id="VD3-su-hWZ"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="ubh-gd-bZD" secondAttribute="centerX" constant="-0.5" id="0Y5-FT-xn3"/>
-                            <constraint firstAttribute="centerX" secondItem="R0W-8X-9Su" secondAttribute="centerX" constant="-0.5" id="M2W-2e-9Ve"/>
-                            <constraint firstItem="Nym-Pj-yyg" firstAttribute="top" secondItem="R0W-8X-9Su" secondAttribute="bottom" constant="8" id="dnI-Ci-CrM"/>
+                            <constraint firstItem="Nym-Pj-yyg" firstAttribute="top" secondItem="XRH-kQ-Cv7" secondAttribute="bottom" constant="7" id="dfE-fH-sPI"/>
+                            <constraint firstAttribute="centerX" secondItem="XRH-kQ-Cv7" secondAttribute="centerX" constant="-0.5" id="lSb-Hg-Ul8"/>
                             <constraint firstAttribute="centerY" secondItem="ubh-gd-bZD" secondAttribute="centerY" id="lYK-k8-qTy"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="animatedSwitch" destination="K83-We-8cZ" id="v92-4f-eqQ"/>
                         <outlet property="progressBar" destination="ubh-gd-bZD" id="R0Q-Zc-adJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbe-j5-CDb" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="475.5" y="372"/>
+            <point key="canvasLocation" x="475" y="372"/>
         </scene>
     </scenes>
 </document>
