@@ -93,11 +93,14 @@
     
     CGMutablePathRef arc = CGPathCreateMutable();
     
+    CGFloat startAngle = (self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI-(2.f*M_PI)*(self.progressAngle/100.f)*(100.f-100.f*self.value/self.maxValue)/100.f;
+    CGFloat endAngle   = -(self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI;
+  
     CGPathAddArc(arc, NULL,
                  rectSize.width/2, rectSize.height/2,
                  MIN(rectSize.width,rectSize.height)/2 - self.progressLineWidth,
-                 (self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI-(2.f*M_PI)*(self.progressAngle/100.f)*(100.f-100.f*self.value/self.maxValue)/100.f,
-                 -(self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
+                 startAngle,
+                 MIN(startAngle, endAngle),
                  YES);
     
     CGPathRef strokedArc =
