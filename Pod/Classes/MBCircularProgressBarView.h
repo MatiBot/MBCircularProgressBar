@@ -17,6 +17,9 @@ IB_DESIGNABLE
 /* The value of the progress bar  */
 @property (nonatomic,assign) IBInspectable CGFloat   value;
 
+/* The added value of the progress bar - the 'delta' section */
+@property (nonatomic,assign) IBInspectable CGFloat   addedValue;
+
 /* The maximum possible value, used to calculate the progress (value/maxValue)	[0,∞) */
 @property (nonatomic,assign) IBInspectable CGFloat   maxValue;
 
@@ -65,6 +68,18 @@ IB_DESIGNABLE
 /* The shape of the progress bar cap	{kCGLineCapButt=0, kCGLineCapRound=1, kCGLineCapSquare=2} */
 @property (nonatomic,assign) IBInspectable NSInteger progressCapType;
 
+/* The width of the current addition bar (user space units)	[0,∞) */
+@property (nonatomic,assign) IBInspectable CGFloat   additionLineWidth;
+
+/* The color of the current addition bar */
+@property (nonatomic,strong) IBInspectable UIColor   *additionColor;
+
+/* The color of the current addition bar frame */
+@property (nonatomic,strong) IBInspectable UIColor   *additionStrokeColor;
+
+/* The shape of the current addition bar cap	{kCGLineCapButt=0, kCGLineCapRound=1, kCGLineCapSquare=2} */
+@property (nonatomic,assign) IBInspectable NSInteger additionCapType;
+
 /* The width of the background bar (user space units)	[0,∞) */
 @property (nonatomic,assign) IBInspectable CGFloat   emptyLineWidth;
 
@@ -77,4 +92,6 @@ IB_DESIGNABLE
 /* Set the value of the progress bar with animation */
 -(void)setValue:(CGFloat)value animateWithDuration:(NSTimeInterval)duration;
 
+/* Set the value of the delta section of the progress bar with animation */
+-(void)setAddedValue:(CGFloat)addedValue animateWithDuration:(NSTimeInterval)duration;
 @end
