@@ -33,7 +33,7 @@
 @dynamic valueFontName;
 @dynamic showUnitString;
 @dynamic showValueString;
-
+@dynamic textOffset;
 
 #pragma mark - Drawing
 
@@ -131,6 +131,7 @@
   NSMutableAttributedString *text = [NSMutableAttributedString new];
   
   NSString *formatString = [NSString stringWithFormat:@"%%.%df", (int)self.decimalPlaces];
+
   NSAttributedString* value =
   [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:formatString, self.value] attributes:valueFontAttributes];
   
@@ -154,10 +155,12 @@
   }
   
   CGSize percentSize = [text size];
+  CGPoint textCenter = CGPointMake(
+    rectSize.width/2-percentSize.width/2 + self.textOffset.x,
+    rectSize.height/2-percentSize.height/2 + self.textOffset.y
+  );
   
-  [text drawAtPoint:CGPointMake(rectSize.width/2-percentSize.width/2,
-                                rectSize.height/2-percentSize.height/2)];
-  
+  [text drawAtPoint:textCenter];
 }
 
 #pragma mark - Override methods to support animations

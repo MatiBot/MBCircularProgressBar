@@ -60,6 +60,7 @@
     [self setShowUnitString:YES];
     [self setShowValueString:YES];
     [self setValueFontName:@"HelveticaNeue-Thin"];
+    [self setTextOffset:CGPointMake(0, 0)];
     [self setUnitFontName:@"HelveticaNeue-Thin"];
 }
 
@@ -251,6 +252,14 @@
 
 -(BOOL)showUnitString{
   return self.progressLayer.showUnitString;
+}
+
+-(void)setTextOffset:(CGPoint)textOffset{
+  self.progressLayer.textOffset = textOffset;
+}
+
+-(CGPoint)textOffset{
+  return self.progressLayer.textOffset;
 }
 
 #pragma mark - CALayer
