@@ -61,6 +61,7 @@
     [self setShowValueString:YES];
     [self setValueFontName:@"HelveticaNeue-Thin"];
     [self setUnitFontName:@"HelveticaNeue-Thin"];
+    [self setCountInPositiveDirection:YES];
 }
 
 #pragma mark - Getters and Setters for layer properties
@@ -251,6 +252,14 @@
 
 -(BOOL)showUnitString{
   return self.progressLayer.showUnitString;
+}
+
+-(void)setCountInPositiveDirection:(BOOL)countInPositiveDirection{
+  self.progressLayer.countInPositiveDirection = countInPositiveDirection;
+}
+
+-(BOOL)countInPositiveDirection{
+  return self.progressLayer.countInPositiveDirection;
 }
 
 #pragma mark - CALayer

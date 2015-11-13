@@ -74,6 +74,9 @@ IB_DESIGNABLE
 /* The shape of the background bar cap	{kCGLineCapButt=0, kCGLineCapRound=1, kCGLineCapSquare=2} */
 @property (nonatomic,assign) IBInspectable NSInteger emptyCapType;
 
+/* Show increasing or decreasing value in the value/unit text? */
+@property (nonatomic,assign) IBInspectable BOOL countInPositiveDirection;
+
 /* Set the value of the progress bar with animation */
 -(void)setValue:(CGFloat)value animateWithDuration:(NSTimeInterval)duration;
 
