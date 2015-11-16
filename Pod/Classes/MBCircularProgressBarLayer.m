@@ -33,7 +33,7 @@
 @dynamic valueFontName;
 @dynamic showUnitString;
 @dynamic showValueString;
-
+@dynamic countInPositiveDirection;
 
 #pragma mark - Drawing
 
@@ -131,8 +131,9 @@
   NSMutableAttributedString *text = [NSMutableAttributedString new];
   
   NSString *formatString = [NSString stringWithFormat:@"%%.%df", (int)self.decimalPlaces];
+  CGFloat valueToDisplay = self.countInPositiveDirection ? self.value : self.maxValue - self.value;
   NSAttributedString* value =
-  [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:formatString, self.value] attributes:valueFontAttributes];
+  [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:formatString, valueToDisplay] attributes:valueFontAttributes];
   
   [text appendAttributedString:value];
   

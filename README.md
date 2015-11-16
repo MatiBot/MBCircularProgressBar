@@ -63,6 +63,7 @@ progressCapType | NSInteger | The shape of the progress bar cap | {kCGLineCapBut
 emptyLineWidth | CGFloat | The width of the background bar (user space units) | [0,∞)
 emptyLineColor | CGFloat | The color of the background bar |
 emptyCapType | CGFloat | The shape of the background bar cap | {kCGLineCapButt=0, kCGLineCapRound=1, kCGLineCapSquare=2}
+countInPositiveDirection | BOOL | Whether to count down or up in the unit / value text | TRUE (default) = count upwards, FALSE = count down
 
 ## Animation
 
