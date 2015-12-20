@@ -13,17 +13,22 @@
 
 @implementation MBCircularProgressBarLayer
 @dynamic value;
+@dynamic addedValue;
 @dynamic maxValue;
 @dynamic valueFontSize;
 @dynamic unitString;
 @dynamic unitFontSize;
 @dynamic progressLineWidth;
+@dynamic additionLineWidth;
 @dynamic progressColor;
 @dynamic progressStrokeColor;
+@dynamic additionColor;
+@dynamic additionStrokeColor;
 @dynamic emptyLineWidth;
 @dynamic progressAngle;
 @dynamic emptyLineColor;
 @dynamic emptyCapType;
+@dynamic additionCapType;
 @dynamic progressCapType;
 @dynamic fontColor;
 @dynamic progressRotationAngle;
@@ -45,6 +50,7 @@
     CGSize size = CGRectIntegral(CGContextGetClipBoundingBox(context)).size;
     [self drawEmptyBar:size context:context];
     [self drawProgressBar:size context:context];
+    [self drawAdditionBar:size context:context];
   
     if (self.showValueString){
       [self drawText:size context:context];
@@ -117,6 +123,42 @@
     CGPathRelease(strokedArc);
 }
 
+- (void)drawAdditionBar:(CGSize)rectSize context:(CGContextRef)c{
+    if(self.additionLineWidth <= 0){
+        return;
+    }
+
+    CGMutablePathRef arc = CGPathCreateMutable();
+
+    CGPathAddArc(arc, NULL,
+                rectSize.width/2, rectSize.height/2,
+                MIN(rectSize.width,rectSize.height)/2 - self.progressLineWidth,
+                (self.progressAngle/100.f)*M_PI -
+                    ((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI -
+                    (2.f*M_PI)*(self.progressAngle/100.f) * (100.f-100.f*(self.value + self.addedValue)/self.maxValue)/100.f,
+                (self.progressAngle/100.f)*M_PI -
+                    ((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI -
+                    (2.f*M_PI)*(self.progressAngle/100.f) * (100.f-100.f*self.value/self.maxValue)/100.f,
+                YES);
+
+    CGPathRef strokedArc =
+    CGPathCreateCopyByStrokingPath(arc, NULL,
+                                   self.additionLineWidth,
+                                   (CGLineCap)self.additionCapType,
+                                   kCGLineJoinMiter,
+                                   10);
+
+
+    CGContextAddPath(c, strokedArc);
+    CGContextSetFillColorWithColor(c, self.additionColor.CGColor);
+    CGContextSetStrokeColorWithColor(c, self.additionStrokeColor.CGColor);
+    CGContextDrawPath(c, kCGPathFillStroke);
+
+    CGPathRelease(arc);
+    CGPathRelease(strokedArc);
+}
+
+
 - (void)drawText:(CGSize)rectSize context:(CGContextRef)c
 {
   
@@ -131,8 +173,10 @@
   NSMutableAttributedString *text = [NSMutableAttributedString new];
   
   NSString *formatString = [NSString stringWithFormat:@"%%.%df", (int)self.decimalPlaces];
+
+  CGFloat valueToDisplay = self.value + self.addedValue;
   NSAttributedString* value =
-  [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:formatString, self.value] attributes:valueFontAttributes];
+  [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:formatString, valueToDisplay] attributes:valueFontAttributes];
   
   [text appendAttributedString:value];
   
@@ -163,19 +207,19 @@
 #pragma mark - Override methods to support animations
 
 + (BOOL)needsDisplayForKey:(NSString *)key {
-    if ([key isEqualToString:@"value"]) {
+    if ([key isEqualToString:@"value"] || [key isEqualToString:@"addedValue"]) {
         return YES;
     }
     return [super needsDisplayForKey:key];
 }
 
 - (id<CAAction>)actionForKey:(NSString *)event{
-    if ([self presentationLayer] != nil) {
-        if ([event isEqualToString:@"value"] && self.animated) {
+    if ([self presentationLayer] != nil && self.animated) {
+        if ([event isEqualToString:@"value"] || [event isEqualToString:@"addedValue"]) {
             CABasicAnimation *anim = [CABasicAnimation
-                                      animationWithKeyPath:@"value"];
+                                      animationWithKeyPath:event];
             anim.fromValue = [[self presentationLayer]
-                              valueForKey:@"value"];
+                              valueForKey:event];
             anim.duration = self.animationDuration;
             return anim;
         }

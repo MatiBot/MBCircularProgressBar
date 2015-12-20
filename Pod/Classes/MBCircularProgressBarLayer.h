@@ -13,6 +13,7 @@
 @property (nonatomic,assign) CGFloat  progressAngle;
 @property (nonatomic,assign) CGFloat  progressRotationAngle;
 @property (nonatomic,assign) CGFloat  value;
+@property (nonatomic,assign) CGFloat  addedValue;
 @property (nonatomic,assign) CGFloat  maxValue;
 @property (nonatomic,assign) NSTimeInterval  animationDuration;
 @property (nonatomic,assign) BOOL  animated;
@@ -25,6 +26,11 @@
 @property (nonatomic,strong) UIColor    *progressColor;
 @property (nonatomic,strong) UIColor    *progressStrokeColor;
 @property (nonatomic,assign) CGLineCap  progressCapType;
+
+@property (nonatomic,assign) CGFloat   additionLineWidth;
+@property (nonatomic,strong) UIColor   *additionColor;
+@property (nonatomic,strong) UIColor   *additionStrokeColor;
+@property (nonatomic,assign) NSInteger additionCapType;
 
 @property (nonatomic,assign) CGFloat    emptyLineWidth;
 @property (nonatomic,assign) CGLineCap  emptyCapType;
