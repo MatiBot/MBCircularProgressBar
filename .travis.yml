@@ -3,7 +3,7 @@
 # * https://github.com/supermarin/xcpretty#usage
 
 language: objective-c
-# cache: cocoapods
+cache: cocoapods
 # podfile: Example/Podfile
 
 rvm:
