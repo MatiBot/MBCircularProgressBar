@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "MBCircularProgressBar"
-  s.version          = "0.3.2"
+  s.version          = "0.3.3"
   s.summary          = "a circular animatable & IB highly customizable progress bar"
   s.description      = <<-DESC
 a circular animatable & Interface Builder highly customizable progress bar
@@ -21,7 +21,7 @@ a circular animatable & Interface Builder highly customizable progress bar
   s.source           = { :git => "https://github.com/matibot/MBCircularProgressBar.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/@b0tnik'
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '8.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
