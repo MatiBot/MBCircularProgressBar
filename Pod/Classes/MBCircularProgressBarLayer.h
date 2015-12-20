@@ -37,4 +37,6 @@
 @property (nonatomic,assign)  BOOL      showUnitString;
 @property (nonatomic,assign)  BOOL      showValueString;
 
+@property (nonatomic,assign)  CGPoint   textOffset;
+
 @end
