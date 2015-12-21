@@ -20,9 +20,9 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		63980130CDF6BC732C347D57 /* Pods_MBCircularProgressBar_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5791F1DF866072B3B8D94FD /* Pods_MBCircularProgressBar_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		63980130CDF6BC732C347D57 /* Pods_MBCircularProgressBar_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5791F1DF866072B3B8D94FD /* Pods_MBCircularProgressBar_Example.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		956C57FA64537AC654C3A504 /* Pods_MBCircularProgressBar_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BE41AE6F2B88B071CC0C9B /* Pods_MBCircularProgressBar_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		956C57FA64537AC654C3A504 /* Pods_MBCircularProgressBar_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BE41AE6F2B88B071CC0C9B /* Pods_MBCircularProgressBar_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
