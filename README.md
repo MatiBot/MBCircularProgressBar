@@ -73,6 +73,7 @@ In order to animate a change in the progress bar you should use the `setValue:an
 ```objc
 [self.progressBar setValue:55.f animateWithDuration:1];
 ```
+![](https://raw.github.com/matibot/MBCircularProgressBar/master/Readme/animation.gif)
 
 ## References
 
