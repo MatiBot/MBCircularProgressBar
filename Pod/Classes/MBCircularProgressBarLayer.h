@@ -117,7 +117,11 @@
  */
 @property (nonatomic,assign)  BOOL      showUnitString;
 
+/**
+ * The offset to apply to the unit / value text
+ */
 @property (nonatomic,assign)  CGPoint   textOffset;
+
 /**
  * Should show value string
  */

@@ -120,7 +120,9 @@ IB_DESIGNABLE
  */
 @property (nonatomic,assign) IBInspectable NSInteger emptyCapType;
 
-/* The offset of the value/unit text */
+/**
+ * The offset to apply to the unit / value text
+ */
 @property (nonatomic,assign) IBInspectable CGPoint textOffset;
 
 /** 
