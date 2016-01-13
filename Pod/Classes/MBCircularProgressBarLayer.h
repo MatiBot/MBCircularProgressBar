@@ -8,6 +8,8 @@
 
 @import QuartzCore;
 
+typedef void (^MBCircularProgressBarCompletionBlock)(BOOL finished);
+
 /**
  * The MBCircularProgressBarLayer class is a CALayer subclass that represents the underlying layer
  * of MBCircularProgressBarView.
@@ -133,5 +135,10 @@
  * Should show value string
  */
 @property (nonatomic,assign)  BOOL      showValueString;
+
+/**
+ * Completion block to call after animation stops
+ */
+@property (nonatomic,strong) MBCircularProgressBarCompletionBlock completionBlock;
 
 @end
