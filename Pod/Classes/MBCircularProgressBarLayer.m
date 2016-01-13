@@ -180,6 +180,7 @@
             anim.fromValue = [[self presentationLayer]
                               valueForKey:@"value"];
             anim.duration = self.animationDuration;
+            anim.delegate = self;
             return anim;
         }
     }
@@ -187,5 +188,11 @@
     return [super actionForKey:event];
 }
 
+- (void) animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if (_completionBlock) {
+        _completionBlock(flag);
+    }
+}
 
 @end

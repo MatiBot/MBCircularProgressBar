@@ -132,4 +132,12 @@ IB_DESIGNABLE
  */
 -(void)setValue:(CGFloat)value animateWithDuration:(NSTimeInterval)duration;
 
+/**
+ * Set the value of the progress bar with animation
+ * @param value the new value
+ * @param duration animation duration in seconds
+ * @param complection block to call after animation stops
+ */
+-(void)setValue:(CGFloat)value animateWithDuration:(NSTimeInterval)duration completion:(void (^)(BOOL finished))completion;
+
 @end

@@ -280,4 +280,9 @@
     [self progressLayer].value = value;
 }
 
+-(void)setValue:(CGFloat)value animateWithDuration:(NSTimeInterval)duration completion:(void (^)(BOOL finished))completion {
+    [self progressLayer].completionBlock = completion;
+    [self setValue:value animateWithDuration:duration];
+}
+
 @end
