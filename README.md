@@ -1,8 +1,7 @@
-[![TravisCI](https://travis-ci.org/MatiBot/MBCircularProgressBar.svg)](https://travis-ci.org/MatiBot/MBCircularProgressBar)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/matibot/MBCircularProgressBar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Version](https://img.shields.io/cocoapods/v/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
 [![License](https://img.shields.io/cocoapods/l/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
 [![Platform](https://img.shields.io/cocoapods/p/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Analytics](https://ga-beacon.appspot.com/UA-66922648-1/matibot/MBCircularProgressBar?pixel)](https://github.com/matibot/MBCircularProgressBar)
 
 If you use MBCircularProgressBar, please tell me and I will add your app here.
@@ -23,37 +22,17 @@ MBCircularProgressBar is available through [CocoaPods](http://cocoapods.org).
 
 To install it, simply add the following lines to your Podfile:
 
-* Add this line to the begining of your Podfile in order to support @IBDesignable. More info [here](http://blog.cocoapods.org/CocoaPods-0.36/) (Thanks to: [@StevenMasini](https://github.com/StevenMasini))
+Add this line to the begining of your Podfile in order to support @IBDesignable. More info [here](http://blog.cocoapods.org/CocoaPods-0.36/) (Thanks to: [@StevenMasini](https://github.com/StevenMasini))
 
 ```ruby
 use_frameworks!
 ```
 
-* Add this line so with every Pod install/update cocoapods would download the library intro your project:
+And add this line so with every Pod install/update cocoapods would download the library intro your project:
 
 ```ruby
 pod "MBCircularProgressBar"
 ```
-
-### Installation with Carthage
-
-[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
-
-You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
-
-```bash
-$ brew update
-$ brew install carthage
-```
-
-To integrate MBCircularProgressBar into your Xcode project using Carthage, specify it in your `Cartfile`:
-
-```ogdl
-github "MatiBot/MBCircularProgressBar"
-```
-
-Run `carthage update` to build the framework and drag the built `MBCircularProgressBar.framework` into your Xcode project.
-
 
 ### Directly
 
@@ -84,7 +63,6 @@ progressCapType | NSInteger | The shape of the progress bar cap | {kCGLineCapBut
 emptyLineWidth | CGFloat | The width of the background bar (user space units) | [0,∞)
 emptyLineColor | CGFloat | The color of the background bar |
 emptyCapType | CGFloat | The shape of the background bar cap | {kCGLineCapButt=0, kCGLineCapRound=1, kCGLineCapSquare=2}
-textOffset | CGPoint | The offset to apply to the unit / value text | (0,0) = center of the circle
 
 ## Animation
 
@@ -93,7 +71,6 @@ In order to animate a change in the progress bar you should use the `setValue:an
 ```objc
 [self.progressBar setValue:55.f animateWithDuration:1];
 ```
-![](https://raw.github.com/matibot/MBCircularProgressBar/master/Readme/animation.gif)
 
 ## References
 
