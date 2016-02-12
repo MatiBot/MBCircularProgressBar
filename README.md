@@ -17,7 +17,7 @@ To run the example project, clone the repo, and run `pod update` from the Exampl
 
 ## Installation
 
-### Cocoapods
+### CocoaPods
 
 MBCircularProgressBar is available through [CocoaPods](http://cocoapods.org).
 
