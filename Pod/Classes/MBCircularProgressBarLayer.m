@@ -23,6 +23,7 @@
 @dynamic emptyLineWidth;
 @dynamic progressAngle;
 @dynamic emptyLineColor;
+@dynamic emptyLineStrokeColor;
 @dynamic emptyCapType;
 @dynamic progressCapType;
 @dynamic fontColor;
@@ -78,7 +79,7 @@
     
     
     CGContextAddPath(c, strokedArc);
-    CGContextSetStrokeColorWithColor(c, self.emptyLineColor.CGColor);
+    CGContextSetStrokeColorWithColor(c, self.emptyLineStrokeColor.CGColor);
     CGContextSetFillColorWithColor(c, self.emptyLineColor.CGColor);
     CGContextDrawPath(c, kCGPathFillStroke);
     
