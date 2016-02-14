@@ -98,6 +98,10 @@
  * The color of the background bar
  */
 @property (nonatomic,strong) UIColor    *emptyLineColor;
+/**
+ * The color of the background bar stroke line
+ */
+@property (nonatomic,strong) UIColor    *emptyLineStrokeColor;
 
 /*
  * Number of decimal places of the value [0,∞)
