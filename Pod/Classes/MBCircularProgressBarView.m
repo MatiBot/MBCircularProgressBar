@@ -41,15 +41,10 @@
     //Without setting the content scale factor the layer would be pixelated
     [self setContentScaleFactor:[[UIScreen mainScreen] scale]];
   
-    [self setUnitString:@"%"];
     [self setValue:0.f];
     [self setMaxValue:100.f];
     [self setProgressRotationAngle:0.f];
-    [self setProgressStrokeColor:[UIColor orangeColor]];
-    [self setProgressColor:[UIColor orangeColor]];
     [self setProgressCapType:kCGLineCapRound];
-    [self setEmptyLineColor:[UIColor lightGrayColor]];
-    [self setFontColor:[UIColor blackColor]];
     [self setEmptyLineWidth:1.f];
     [self setProgressLineWidth:14.f];
     [self setProgressAngle:80.f];
@@ -59,9 +54,7 @@
     [self setDecimalPlaces:0];
     [self setShowUnitString:YES];
     [self setShowValueString:YES];
-    [self setValueFontName:@"HelveticaNeue-Thin"];
     [self setTextOffset:CGPointMake(0, 0)];
-    [self setUnitFontName:@"HelveticaNeue-Thin"];
 }
 
 #pragma mark - Getters and Setters for layer properties

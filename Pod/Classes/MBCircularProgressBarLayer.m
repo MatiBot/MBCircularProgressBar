@@ -78,8 +78,16 @@
     
     
     CGContextAddPath(c, strokedArc);
-    CGContextSetStrokeColorWithColor(c, self.emptyLineColor.CGColor);
-    CGContextSetFillColorWithColor(c, self.emptyLineColor.CGColor);
+    
+    CGColorRef emptyLineColor;
+    if (self.emptyLineColor) {
+        emptyLineColor = self.emptyLineColor.CGColor;
+    } else {
+        emptyLineColor = [UIColor lightGrayColor].CGColor;
+    }
+    
+    CGContextSetStrokeColorWithColor(c, emptyLineColor);
+    CGContextSetFillColorWithColor(c, emptyLineColor);
     CGContextDrawPath(c, kCGPathFillStroke);
     
     CGPathRelease(arc);
@@ -109,8 +117,23 @@
 
     
     CGContextAddPath(c, strokedArc);
-    CGContextSetFillColorWithColor(c, self.progressColor.CGColor);
-    CGContextSetStrokeColorWithColor(c, self.progressStrokeColor.CGColor);
+    
+    CGColorRef progressColor;
+    if (self.progressColor) {
+        progressColor = self.progressColor.CGColor;
+    } else {
+        progressColor = [UIColor orangeColor].CGColor;
+    }
+    CGContextSetFillColorWithColor(c, progressColor);
+    
+    CGColorRef progressStrokeColor;
+    if (self.progressStrokeColor) {
+        progressStrokeColor = self.progressStrokeColor.CGColor;
+    } else {
+        progressStrokeColor = [UIColor orangeColor].CGColor;
+    }
+    CGContextSetStrokeColorWithColor(c, progressStrokeColor);
+    
     CGContextDrawPath(c, kCGPathFillStroke);
     
     CGPathRelease(arc);
@@ -124,9 +147,21 @@
   NSMutableParagraphStyle* textStyle = NSMutableParagraphStyle.defaultParagraphStyle.mutableCopy;
   textStyle.alignment = NSTextAlignmentLeft;
   
-  CGFloat valueFontSize = self.valueFontSize == -1 ? rectSize.height/5 : self.valueFontSize;
+  CGFloat valueFontSize = self.valueFontSize < 0 ? rectSize.height/5 : self.valueFontSize;
   
-  NSDictionary* valueFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:valueFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+  UIFont* valueFont = [UIFont fontWithName:self.valueFontName size:valueFontSize];
+  if (!valueFont) {
+    valueFont = [UIFont systemFontOfSize:valueFontSize];
+  }
+    
+    UIColor* fontColor;
+    if (self.fontColor) {
+        fontColor = self.fontColor;
+    } else {
+        fontColor = [UIColor blackColor];
+    }
+    
+  NSDictionary* valueFontAttributes = @{NSFontAttributeName: valueFont, NSForegroundColorAttributeName: fontColor, NSParagraphStyleAttributeName: textStyle};
   
   NSMutableAttributedString *text = [NSMutableAttributedString new];
   
@@ -140,17 +175,34 @@
   // set the decimal font size
   NSUInteger decimalLocation = [text.string rangeOfString:@"."].location;
   if (decimalLocation != NSNotFound){
-    NSDictionary* valueDecimalFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:self.valueDecimalFontSize == -1 ? valueFontSize : self.valueDecimalFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+    UIFont* valueDecimalFont = [UIFont fontWithName:self.valueFontName size:self.valueDecimalFontSize < 0 ? valueFontSize : self.valueDecimalFontSize];
+    if (!valueDecimalFont) {
+      valueDecimalFont = [UIFont systemFontOfSize:valueFontSize];
+    }
+      
+    NSDictionary* valueDecimalFontAttributes = @{NSFontAttributeName: valueDecimalFont, NSForegroundColorAttributeName: fontColor, NSParagraphStyleAttributeName: textStyle};
     NSRange decimalRange = NSMakeRange(decimalLocation, text.length - decimalLocation);
     [text setAttributes:valueDecimalFontAttributes range:decimalRange];
   }
   
   // ad the unit only if specified
   if (self.showUnitString) {
-    NSDictionary* unitFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.unitFontName size:self.unitFontSize == -1 ? rectSize.height/7 : self.unitFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+    UIFont* unitFont = [UIFont fontWithName:self.unitFontName size:self.unitFontSize < 0 ? rectSize.height/7 : self.unitFontSize];
+    if (!unitFont) {
+      unitFont = [UIFont systemFontOfSize:valueFontSize];
+    }
+      
+    NSDictionary* unitFontAttributes = @{NSFontAttributeName: unitFont, NSForegroundColorAttributeName: fontColor, NSParagraphStyleAttributeName: textStyle};
     
+    NSString* unitString;
+    if (self.unitString) {
+      unitString = [NSString stringWithFormat:@"%@", self.unitString];
+    } else {
+      unitString = @"%";
+    }
+      
     NSAttributedString* unit =
-    [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", self.unitString] attributes:unitFontAttributes];
+    [[NSAttributedString alloc] initWithString:unitString attributes:unitFontAttributes];
     [text appendAttributedString:unit];
   }
   
