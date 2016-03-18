@@ -132,6 +132,6 @@
 /**
  * Should show value string
  */
-@property (nonatomic,assign)            BOOL      showValueString;
+@property (nonatomic,assign)            BOOL        showValueString;
 
 @end

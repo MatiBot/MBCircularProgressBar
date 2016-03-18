@@ -38,7 +38,7 @@ IB_DESIGNABLE
 /** 
  * The name of the font of the value string
  */
-@property (nonatomic,copy,nullable)      IBInspectable NSString  *valueFontName;
+@property (nonatomic,copy,nullable)     IBInspectable NSString  *valueFontName;
 
 /**
  * The font size of the value text	[0,∞) 
@@ -58,7 +58,7 @@ IB_DESIGNABLE
 /**
  * The name of the font of the unit string 
  */
-@property (nonatomic,copy,nullable)      IBInspectable NSString  *unitFontName;
+@property (nonatomic,copy,nullable)     IBInspectable NSString  *unitFontName;
 
 /**
  * The font size of the unit text [0,∞) 
@@ -113,7 +113,7 @@ IB_DESIGNABLE
 /**
  * The color of the background bar 
  */
-@property (nonatomic,strong,nonnull)    IBInspectable UIColor   *emptyLineColor;
+@property (nonatomic,strong,nullable)   IBInspectable UIColor   *emptyLineColor;
 
 /**
  * The shape of the background bar cap {kCGLineCapButt=0, kCGLineCapRound=1, kCGLineCapSquare=2}
@@ -123,7 +123,7 @@ IB_DESIGNABLE
 /**
  * The offset to apply to the unit / value text
  */
-@property (nonatomic,assign)            IBInspectable CGPoint textOffset;
+@property (nonatomic,assign)            IBInspectable CGPoint   textOffset;
 
 /** 
  * Set the value of the progress bar with animation
