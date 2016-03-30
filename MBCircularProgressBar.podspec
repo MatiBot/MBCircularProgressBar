@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "MBCircularProgressBar"
-  s.version          = "0.3.4"
+  s.version          = "0.3.5"
   s.summary          = "a circular animatable & IB highly customizable progress bar"
   s.description      = <<-DESC
 a circular animatable & Interface Builder highly customizable progress bar
@@ -25,9 +25,6 @@ a circular animatable & Interface Builder highly customizable progress bar
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'MBCircularProgressBar' => ['Pod/Assets/*.png']
-  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
