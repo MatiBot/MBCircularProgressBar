@@ -49,6 +49,7 @@
     [self setProgressColor:[UIColor orangeColor]];
     [self setProgressCapType:kCGLineCapRound];
     [self setEmptyLineColor:[UIColor lightGrayColor]];
+    [self setEmptyLineStrokeColor:[UIColor lightGrayColor]];
     [self setFontColor:[UIColor blackColor]];
     [self setEmptyLineWidth:1.f];
     [self setProgressLineWidth:14.f];
@@ -174,6 +175,14 @@
 
 -(UIColor*)emptyLineColor{
     return self.progressLayer.emptyLineColor;
+}
+
+-(void)setEmptyLineStrokeColor:(UIColor *)emptyLineStrokeColor{
+    self.progressLayer.emptyLineStrokeColor = emptyLineStrokeColor;
+}
+
+-(UIColor*)emptyLineStrokeColor{
+    return self.progressLayer.emptyLineStrokeColor;
 }
 
 -(void)setProgressAngle:(CGFloat)progressAngle{

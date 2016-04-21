@@ -116,6 +116,11 @@ IB_DESIGNABLE
 @property (nonatomic,strong) IBInspectable UIColor   *emptyLineColor;
 
 /**
+ * The color of the background bar stroke color
+ */
+@property (nonatomic,strong) IBInspectable UIColor   *emptyLineStrokeColor;
+
+/**
  * The shape of the background bar cap	{kCGLineCapButt=0, kCGLineCapRound=1, kCGLineCapSquare=2} 
  */
 @property (nonatomic,assign) IBInspectable NSInteger emptyCapType;
