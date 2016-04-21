@@ -34,6 +34,7 @@
 @dynamic showUnitString;
 @dynamic showValueString;
 @dynamic textOffset;
+@dynamic countdown;
 
 #pragma mark - Drawing
 
@@ -131,10 +132,15 @@
   NSMutableAttributedString *text = [NSMutableAttributedString new];
   
   NSString *formatString = [NSString stringWithFormat:@"%%.%df", (int)self.decimalPlaces];
-
-  NSAttributedString* value =
-  [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:formatString, self.value] attributes:valueFontAttributes];
-  
+    
+  NSString* textToPresent;
+  if (self.countdown) {
+    textToPresent = [NSString stringWithFormat:formatString, (self.maxValue - self.value)];
+  } else {
+    textToPresent = [NSString stringWithFormat:formatString, self.value];
+  }
+  NSAttributedString* value = [[NSAttributedString alloc] initWithString:textToPresent
+                                                                attributes:valueFontAttributes];
   [text appendAttributedString:value];
   
   // set the decimal font size

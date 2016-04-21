@@ -125,6 +125,12 @@ IB_DESIGNABLE
  */
 @property (nonatomic,assign) IBInspectable CGPoint textOffset;
 
+
+/**
+ * The bool value to apply to if its counddown or not
+ */
+@property (nonatomic,assign) IBInspectable BOOL      countdown;
+
 /** 
  * Set the value of the progress bar with animation
  * @param value the new value

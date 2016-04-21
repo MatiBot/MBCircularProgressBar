@@ -134,4 +134,11 @@
  */
 @property (nonatomic,assign)  BOOL      showValueString;
 
+
+/**
+ * Show label value as countdown
+ * Default is NO
+ */
+@property (nonatomic,assign)  BOOL      countdown;
+
 @end
