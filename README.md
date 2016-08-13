@@ -103,6 +103,10 @@ In order to animate a change in the progress bar you should use the `setValue:an
 
 Mati Bot, matibot@gmail.com, [@b0tnik](https://twitter.com/b0tnik)
 
+## Apps that use it:
+
+[20 Hours](https://itunes.apple.com/us/app/id1141979499)
+
 ## License
 
 MBCircularProgressBar is available under the MIT license. See the LICENSE file for more info.
