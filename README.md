@@ -81,7 +81,7 @@ progressColor | UIColor | The color of the progress bar |
 progressStrokeColor | UIColor | The color of the progress bar frame  |
 progressCapType | NSInteger | The shape of the progress bar cap | {kCGLineCapButt=0, kCGLineCapRound=1, kCGLineCapSquare=2}
 emptyLineWidth | CGFloat | The width of the background bar (user space units) | [0,∞)
-emptyLineColor | CGFloat | The color of the background bar |
+emptyLineColor | UIColor | The color of the background bar |
 emptyCapType | CGFloat | The shape of the background bar cap | {kCGLineCapButt=0, kCGLineCapRound=1, kCGLineCapSquare=2}
 textOffset | CGPoint | The offset to apply to the unit / value text | (0,0) = center of the circle
 
