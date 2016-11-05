@@ -91,7 +91,7 @@ textOffset | CGPoint | The offset to apply to the unit / value text | (0,0) = ce
 In order to animate a change in the progress bar you should nest the value property manipulation in a `[UIView animateWithDuration:]` method
 
 ```objc
-    [UIView animateWithDuration:self.animatedSwitch.on * 1.f animations:^{
+    [UIView animateWithDuration:1.f animations:^{
         self.progressBar.value = 55.f;
     }];
 ```
