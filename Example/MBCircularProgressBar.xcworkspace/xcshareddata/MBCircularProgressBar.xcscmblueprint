@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "13A67F02CED68E0740A1F3D357DF5EAA09C1623E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "13A67F02CED68E0740A1F3D357DF5EAA09C1623E" : 9223372036854775807,
+    "666EBCD23F5DB1B0099E8ACF4F7D9A2EFEA39B51" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E01D5ACB-757F-46CF-BF07-10D4E8521EC3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "13A67F02CED68E0740A1F3D357DF5EAA09C1623E" : "MBCircularProgressBar\/",
+    "666EBCD23F5DB1B0099E8ACF4F7D9A2EFEA39B51" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MBCircularProgressBar",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Example\/MBCircularProgressBar.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/MatiBot\/MBCircularProgressBar.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "13A67F02CED68E0740A1F3D357DF5EAA09C1623E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/MatiBot\/MBRateApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "666EBCD23F5DB1B0099E8ACF4F7D9A2EFEA39B51"
+    }
+  ]
+}
