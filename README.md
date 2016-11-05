@@ -1,4 +1,3 @@
-[![TravisCI](https://travis-ci.org/MatiBot/MBCircularProgressBar.svg)](https://travis-ci.org/MatiBot/MBCircularProgressBar)
 [![Version](https://img.shields.io/cocoapods/v/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
 [![License](https://img.shields.io/cocoapods/l/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
 [![Platform](https://img.shields.io/cocoapods/p/MBCircularProgressBar.svg?style=flat)](http://cocoapods.org/pods/MBCircularProgressBar)
