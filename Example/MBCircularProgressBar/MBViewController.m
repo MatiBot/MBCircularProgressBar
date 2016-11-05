@@ -23,12 +23,9 @@
 }
 
 - (IBAction)animate:(UIButton *)sender {
-    if(self.animatedSwitch.on){
-        [self.progressBar setValue:100.f - self.progressBar.value
-                          animateWithDuration:1];
-    }else{
+    [UIView animateWithDuration:self.animatedSwitch.on * 1.f animations:^{
         self.progressBar.value = 100.f - self.progressBar.value;
-    }
+    }];
 }
 
 

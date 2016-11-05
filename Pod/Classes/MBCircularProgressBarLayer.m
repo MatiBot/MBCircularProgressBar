@@ -39,6 +39,10 @@
 
 #pragma mark - Drawing
 
+//-(void)setValue:(CGFloat)value{
+//    [self drawProgressBar:<#(CGSize)#> context:<#(CGContextRef)#>]
+//}
+
 - (void) drawInContext:(CGContextRef) context{
     [super drawInContext:context];
 
@@ -181,18 +185,22 @@
 
 - (id<CAAction>)actionForKey:(NSString *)event{
     if ([self presentationLayer] != nil) {
-        if ([event isEqualToString:@"value"] && self.animated) {
-            CABasicAnimation *anim = [CABasicAnimation
-                                      animationWithKeyPath:@"value"];
-            anim.fromValue = [[self presentationLayer]
-                              valueForKey:@"value"];
-            anim.duration = self.animationDuration;
-            return anim;
+        if ([event isEqualToString:@"value"]) {  
+            id animation = [super actionForKey:@"backgroundColor"];
+            
+            if (animation == nil || [animation isEqual:[NSNull null]])
+            {
+                [self setNeedsDisplay];
+                return [NSNull null];
+            }
+            [animation setKeyPath:event];
+            [animation setFromValue:@([self.presentationLayer value])];
+            [animation setToValue:nil];
+            return animation;
         }
     }
     
     return [super actionForKey:event];
 }
-
 
 @end

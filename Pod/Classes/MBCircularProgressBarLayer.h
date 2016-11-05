@@ -40,11 +40,6 @@
 @property (nonatomic,assign) NSTimeInterval  animationDuration;
 
 /**
- * Defines if the progress should animate on value change
- */
-@property (nonatomic,assign) BOOL  animated;
-
-/**
  * The font size of the value text	[0,∞)
  */
 @property (nonatomic,assign) CGFloat  valueFontSize;
