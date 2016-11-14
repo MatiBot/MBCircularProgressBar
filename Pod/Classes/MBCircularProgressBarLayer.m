@@ -33,6 +33,8 @@
 @dynamic unitFontName;
 @dynamic valueFontName;
 @dynamic showUnitString;
+@dynamic unitTrailing;
+@dynamic unitBaselineOffset;
 @dynamic showValueString;
 @dynamic textOffset;
 @dynamic countdown;
@@ -158,11 +160,13 @@
   
   // ad the unit only if specified
   if (self.showUnitString) {
-    NSDictionary* unitFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.unitFontName size:self.unitFontSize == -1 ? rectSize.height/7 : self.unitFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+      NSDictionary* unitFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.unitFontName size:self.unitFontSize == -1 ? rectSize.height/7 : self.unitFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle, NSBaselineOffsetAttributeName: [NSNumber numberWithFloat:self.unitBaselineOffset]};
     
     NSAttributedString* unit =
     [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", self.unitString] attributes:unitFontAttributes];
-    [text appendAttributedString:unit];
+      
+      // place the unit string before or after the value text
+      self.unitTrailing ? [text appendAttributedString:unit] : [text insertAttributedString:unit atIndex:0];
   }
   
   CGSize percentSize = [text size];
