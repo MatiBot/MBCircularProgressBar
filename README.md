@@ -73,7 +73,7 @@ valueFontName | NSString | The name of the font of the unit string | Any valid f
 unitFontSize | CGFloat | The font size of the unit text | [0,∞)
 unitString | NSString | The string that represents the units, usually % |
 unitTrailing | BOOL | A bool indicating the placement of the unit string relative to the value | {YES=right, NO=left}
-unitBaselineOffset | CGFloat | The offset (in points) of the unit string from the baseline | [0,∞)
+unitBaselineOffset | CGFloat | The offset (in points) of the unit string from the baseline | (∞,∞)
 fontColor | UIColor | The color of the value and unit text |
 decimalPlaces | NSInteger | Number of decimal places of the value | [0,∞)
 progressRotationAngle | CGFloat | Progress bar rotation (Clockewise)| [0,100]

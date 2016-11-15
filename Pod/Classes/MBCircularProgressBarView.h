@@ -76,7 +76,7 @@ IB_DESIGNABLE
 @property (nonatomic, assign) IBInspectable BOOL unitTrailing;
 
 /**
- *  The offset (in points) of the unit string from the baseline     [0,∞)
+ *  The offset (in points) of the unit string from the baseline     (∞,∞)
  */
 @property (nonatomic, assign) IBInspectable CGFloat unitBaselineOffset;
 
