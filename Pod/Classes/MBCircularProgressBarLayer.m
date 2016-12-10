@@ -194,7 +194,7 @@
                 return [NSNull null];
             }
             [animation setKeyPath:event];
-            [animation setFromValue:@([self.presentationLayer value])];
+            [animation setFromValue:[self.presentationLayer valueForKey:@"value"]];
             [animation setToValue:nil];
             return animation;
         }
