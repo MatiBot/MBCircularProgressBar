@@ -4,6 +4,7 @@
 
 language: objective-c
 cache: cocoapods
+osx_image: xcode8.1
 # podfile: Example/Podfile
 
 rvm:
