@@ -55,6 +55,17 @@
 @property (nonatomic,copy)   NSString *unitString;
 
 /**
+ *  A bool indicating the placement of the unit string relative to the value (YES=right, NO=left)
+ */
+@property (nonatomic, assign) BOOL unitTrailing;
+
+/**
+ *  The offset (in points) of the unit string from the baseline     (∞,∞)
+ */
+@property (nonatomic, assign) CGFloat unitBaselineOffset;
+
+
+/**
  * The color of the value and unit text
  */
 @property (nonatomic,strong) UIColor  *fontColor;

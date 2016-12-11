@@ -70,6 +70,16 @@ IB_DESIGNABLE
  */
 @property (nonatomic,copy)   IBInspectable NSString  *unitString;
 
+/**
+ *  A bool indicating the placement of the unit string relative to the value (YES=right, NO=left)
+ */
+@property (nonatomic, assign) IBInspectable BOOL unitTrailing;
+
+/**
+ *  The offset (in points) of the unit string from the baseline     (∞,∞)
+ */
+@property (nonatomic, assign) IBInspectable CGFloat unitBaselineOffset;
+
 /** 
  * The color of the value and unit text 
  */
