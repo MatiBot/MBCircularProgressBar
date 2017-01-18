@@ -140,4 +140,11 @@
  */
 @property (nonatomic,assign)  BOOL      countdown;
 
+/**
+ * Circle radius padding from border
+ * of the UIView bounding box
+ * Default value is 0
+ */
+@property (nonatomic, assign) CGFloat   borderPadding;
+
 @end
