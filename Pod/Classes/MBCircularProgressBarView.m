@@ -64,6 +64,7 @@
     [self setTextOffset:CGPointMake(0, 0)];
     [self setUnitFontName:@"HelveticaNeue-Thin"];
     [self setCountdown:NO];
+    [self setBorderPadding:0];
 }
 
 #pragma mark - Getters and Setters for layer properties
@@ -276,6 +277,14 @@
 
 -(BOOL)countdown {
   return self.progressLayer.countdown;
+}
+
+-(void)setBorderPadding:(CGFloat)borderPadding{
+  self.progressLayer.borderPadding = borderPadding;
+}
+
+-(CGFloat)borderPadding{
+  return self.progressLayer.borderPadding;
 }
 
 #pragma mark - CALayer

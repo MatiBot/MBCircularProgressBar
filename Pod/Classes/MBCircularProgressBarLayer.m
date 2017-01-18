@@ -49,6 +49,9 @@
     UIGraphicsPushContext(context);
     
     CGSize size = CGRectIntegral(CGContextGetClipBoundingBox(context)).size;
+    size.height -= 2 * self.borderPadding;
+    size.width  -= 2 * self.borderPadding;
+    
     [self drawEmptyBar:size context:context];
     [self drawProgressBar:size context:context];
   
@@ -68,7 +71,8 @@
     CGMutablePathRef arc = CGPathCreateMutable();
     
     CGPathAddArc(arc, NULL,
-                 rectSize.width/2, rectSize.height/2,
+                 rectSize.width/2 + self.borderPadding,
+                 rectSize.height/2 + self.borderPadding,
                  MIN(rectSize.width,rectSize.height)/2 - self.progressLineWidth,
                  (self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
                  -(self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
@@ -100,7 +104,8 @@
     CGMutablePathRef arc = CGPathCreateMutable();
     
     CGPathAddArc(arc, NULL,
-                 rectSize.width/2, rectSize.height/2,
+                 rectSize.width/2 + self.borderPadding,
+                 rectSize.height/2 + self.borderPadding,
                  MIN(rectSize.width,rectSize.height)/2 - self.progressLineWidth,
                  (self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI-(2.f*M_PI)*(self.progressAngle/100.f)*(100.f-100.f*self.value/self.maxValue)/100.f,
                  -(self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
@@ -167,8 +172,8 @@
   
   CGSize percentSize = [text size];
   CGPoint textCenter = CGPointMake(
-    rectSize.width/2-percentSize.width/2 + self.textOffset.x,
-    rectSize.height/2-percentSize.height/2 + self.textOffset.y
+    rectSize.width/2-percentSize.width/2 + self.textOffset.x + self.borderPadding,
+    rectSize.height/2-percentSize.height/2 + self.textOffset.y + self.borderPadding
   );
   
   [text drawAtPoint:textCenter];
