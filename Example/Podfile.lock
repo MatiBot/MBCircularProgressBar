@@ -1,16 +1,16 @@
 PODS:
-  - MBCircularProgressBar (0.3.4)
+  - MBCircularProgressBar (0.3.5)
 
 DEPENDENCIES:
   - MBCircularProgressBar (from `../`)
 
 EXTERNAL SOURCES:
   MBCircularProgressBar:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  MBCircularProgressBar: ff3b8e2f441214d9ee122a24ba0d4d00cc7de881
+  MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
 
 PODFILE CHECKSUM: 714c3e3d184000ec5c0bd676b588b84e746b2502
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1
