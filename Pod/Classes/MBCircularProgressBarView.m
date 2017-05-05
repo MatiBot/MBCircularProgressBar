@@ -195,7 +195,7 @@
     self.progressLayer.progressRotationAngle = progressRootationAngle;
 }
 
--(CGFloat)progressRootationAngle{
+-(CGFloat)progressRotationAngle{
     return self.progressLayer.progressRotationAngle;
 }
 
@@ -211,7 +211,7 @@
     self.progressLayer.emptyCapType = [self safeCapType:emptyCapType];
 }
 
--(NSInteger)EmptyCapType{
+-(NSInteger)emptyCapType{
     return self.progressLayer.emptyCapType;
 }
 
