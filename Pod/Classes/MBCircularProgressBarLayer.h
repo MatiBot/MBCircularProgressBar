@@ -8,6 +8,12 @@
 
 @import QuartzCore;
 
+typedef NS_ENUM(NSInteger, MBCircularProgressBarAppearanceType) {
+    MBCircularProgressBarAppearanceTypeOverlaysEmptyLine = 0,
+    MBCircularProgressBarAppearanceTypeAboveEmptyLine = 1,
+    MBCircularProgressBarAppearanceTypeUnderEmptyLine = 2
+};
+
 /**
  * The MBCircularProgressBarLayer class is a CALayer subclass that represents the underlying layer
  * of MBCircularProgressBarView.
@@ -25,6 +31,11 @@
 @property (nonatomic,assign) CGFloat  progressRotationAngle;
 
 /**
+ * Progress bar appearance type 
+ */
+@property (nonatomic,assign) MBCircularProgressBarAppearanceType progressAppearanceType;
+
+/**
  * The value of the progress bar
  */
 @property (nonatomic,assign) CGFloat  value;
@@ -33,6 +44,11 @@
  * The maximum possible value, used to calculate the progress (value/maxValue)	[0,∞)
  */
 @property (nonatomic,assign) CGFloat  maxValue;
+
+/**
+ * Padding from borders
+ */
+@property (nonatomic,assign) CGFloat borderPadding;
 
 /**
  * Animation duration in seconds

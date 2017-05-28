@@ -30,6 +30,11 @@ IB_DESIGNABLE
  */
 @property (nonatomic,assign) IBInspectable CGFloat   maxValue;
 
+/**
+ * Padding from borders
+ */
+@property (nonatomic,assign) IBInspectable CGFloat borderPadding;
+
 /* 
  * Number of decimal places of the value [0,∞) 
  */
@@ -74,6 +79,11 @@ IB_DESIGNABLE
  * The color of the value and unit text 
  */
 @property (nonatomic,strong) IBInspectable UIColor   *fontColor;
+
+/**
+ * Progress bar appearance type
+ */
+@property (nonatomic,assign) IBInspectable NSInteger progressAppearanceType;
 
 /**
  * Progress bar rotation (Clockewise)	[0,100] 

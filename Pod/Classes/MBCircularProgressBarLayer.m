@@ -14,6 +14,7 @@
 @implementation MBCircularProgressBarLayer
 @dynamic value;
 @dynamic maxValue;
+@dynamic borderPadding;
 @dynamic valueFontSize;
 @dynamic unitString;
 @dynamic unitFontSize;
@@ -28,6 +29,7 @@
 @dynamic progressCapType;
 @dynamic fontColor;
 @dynamic progressRotationAngle;
+@dynamic progressAppearanceType;
 @dynamic decimalPlaces;
 @dynamic valueDecimalFontSize;
 @dynamic unitFontName;
@@ -48,28 +50,38 @@
 
     UIGraphicsPushContext(context);
     
-    CGSize size = CGRectIntegral(CGContextGetClipBoundingBox(context)).size;
-    [self drawEmptyBar:size context:context];
-    [self drawProgressBar:size context:context];
+    CGRect rect = CGContextGetClipBoundingBox(context);
+    rect = CGRectIntegral(CGRectInset(rect, self.borderPadding, self.borderPadding));
+    
+    [self drawEmptyBar:rect context:context];
+    [self drawProgressBar:rect context:context];
   
     if (self.showValueString){
-      [self drawText:size context:context];
+      [self drawText:rect context:context];
     }
     
     UIGraphicsPopContext();
 }
 
-- (void)drawEmptyBar:(CGSize)rectSize context:(CGContextRef)c{
+- (void)drawEmptyBar:(CGRect)rect context:(CGContextRef)c{
     
     if(self.emptyLineWidth <= 0){
         return;
     }
     
-    CGMutablePathRef arc = CGPathCreateMutable();
+    CGPoint center = {CGRectGetMidX(rect), CGRectGetMidY(rect)};
+    CGFloat radius = MIN(CGRectGetWidth(rect), CGRectGetHeight(rect))/2;
+    if (self.progressAppearanceType == MBCircularProgressBarAppearanceTypeOverlaysEmptyLine) {
+        radius = radius - MAX(self.emptyLineWidth, self.progressLineWidth)/2.f;
+    } else if (self.progressAppearanceType == MBCircularProgressBarAppearanceTypeAboveEmptyLine) {
+        radius = radius - self.progressLineWidth - self.emptyLineWidth/2.f;
+    } else {
+        radius = radius - self.emptyLineWidth/2.f;
+    }
     
+    CGMutablePathRef arc = CGPathCreateMutable();
     CGPathAddArc(arc, NULL,
-                 rectSize.width/2, rectSize.height/2,
-                 MIN(rectSize.width,rectSize.height)/2 - self.progressLineWidth,
+                 center.x, center.y, radius,
                  (self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
                  -(self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
                  YES);
@@ -92,16 +104,24 @@
     CGPathRelease(strokedArc);
 }
 
-- (void)drawProgressBar:(CGSize)rectSize context:(CGContextRef)c{
+- (void)drawProgressBar:(CGRect)rect context:(CGContextRef)c{
     if(self.progressLineWidth <= 0){
         return;
     }
     
-    CGMutablePathRef arc = CGPathCreateMutable();
+    CGPoint center = {CGRectGetMidX(rect), CGRectGetMidY(rect)};
+    CGFloat radius = MIN(CGRectGetWidth(rect), CGRectGetHeight(rect))/2;
+    if (self.progressAppearanceType == MBCircularProgressBarAppearanceTypeOverlaysEmptyLine) {
+        radius = radius - MAX(self.emptyLineWidth, self.progressLineWidth)/2.f;
+    } else if (self.progressAppearanceType == MBCircularProgressBarAppearanceTypeAboveEmptyLine) {
+        radius = radius - self.progressLineWidth/2.f;
+    } else {
+        radius = radius - self.emptyLineWidth - self.progressLineWidth/2.f;
+    }
     
+    CGMutablePathRef arc = CGPathCreateMutable();
     CGPathAddArc(arc, NULL,
-                 rectSize.width/2, rectSize.height/2,
-                 MIN(rectSize.width,rectSize.height)/2 - self.progressLineWidth,
+                 center.x, center.y, radius,
                  (self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI-(2.f*M_PI)*(self.progressAngle/100.f)*(100.f-100.f*self.value/self.maxValue)/100.f,
                  -(self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
                  YES);
@@ -123,14 +143,11 @@
     CGPathRelease(strokedArc);
 }
 
-- (void)drawText:(CGSize)rectSize context:(CGContextRef)c
-{
-  
-
+- (void)drawText:(CGRect)rect context:(CGContextRef)c{
   NSMutableParagraphStyle* textStyle = NSMutableParagraphStyle.defaultParagraphStyle.mutableCopy;
   textStyle.alignment = NSTextAlignmentLeft;
   
-  CGFloat valueFontSize = self.valueFontSize == -1 ? rectSize.height/5 : self.valueFontSize;
+  CGFloat valueFontSize = self.valueFontSize == -1 ? CGRectGetHeight(rect)/5 : self.valueFontSize;
   
   NSDictionary* valueFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:valueFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
   
@@ -158,7 +175,7 @@
   
   // ad the unit only if specified
   if (self.showUnitString) {
-    NSDictionary* unitFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.unitFontName size:self.unitFontSize == -1 ? rectSize.height/7 : self.unitFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+    NSDictionary* unitFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.unitFontName size:self.unitFontSize == -1 ? CGRectGetHeight(rect)/7 : self.unitFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
     
     NSAttributedString* unit =
     [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", self.unitString] attributes:unitFontAttributes];
@@ -167,8 +184,8 @@
   
   CGSize percentSize = [text size];
   CGPoint textCenter = CGPointMake(
-    rectSize.width/2-percentSize.width/2 + self.textOffset.x,
-    rectSize.height/2-percentSize.height/2 + self.textOffset.y
+    CGRectGetMidX(rect)-percentSize.width/2 + self.textOffset.x,
+    CGRectGetMidY(rect)-percentSize.height/2 + self.textOffset.y
   );
   
   [text drawAtPoint:textCenter];
