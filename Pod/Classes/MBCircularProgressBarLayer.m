@@ -203,16 +203,9 @@
 - (id<CAAction>)actionForKey:(NSString *)event{
     if ([self presentationLayer] != nil) {
         if ([event isEqualToString:@"value"]) {  
-            id animation = [super actionForKey:@"backgroundColor"];
+            CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:event];
+            animation.fromValue = @([self.presentationLayer value]);
             
-            if (animation == nil || [animation isEqual:[NSNull null]])
-            {
-                [self setNeedsDisplay];
-                return [NSNull null];
-            }
-            [animation setKeyPath:event];
-            [animation setFromValue:[self.presentationLayer valueForKey:@"value"]];
-            [animation setToValue:nil];
             return animation;
         }
     }
