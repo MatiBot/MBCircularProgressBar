@@ -161,6 +161,26 @@
   } else {
     textToPresent = [NSString stringWithFormat:formatString, self.value];
   }
+    
+    if(self.isPersian)
+    {
+        NSString *targetString = [NSString stringWithFormat:formatString, self.value];
+        NSNumberFormatter *formatter = [NSNumberFormatter new];
+        formatter.locale = [NSLocale localeWithLocaleIdentifier:@"fa"];
+        
+        for (NSInteger i = 0; i < 10; i++) {
+            NSNumber *num = @(i);
+            targetString = [targetString stringByReplacingOccurrencesOfString:num.stringValue withString:[formatter stringFromNumber:num]];
+        }
+        
+        textToPresent = targetString;
+    }
+    else
+    {
+        // nothing
+    }
+    
+    
   NSAttributedString* value = [[NSAttributedString alloc] initWithString:textToPresent
                                                                 attributes:valueFontAttributes];
   [text appendAttributedString:value];

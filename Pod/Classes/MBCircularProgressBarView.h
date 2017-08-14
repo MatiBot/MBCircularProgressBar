@@ -146,4 +146,10 @@ IB_DESIGNABLE
  */
 @property (nonatomic,assign) IBInspectable BOOL      countdown;
 
+
+/**
+ * The bool value to convert English number to Persian
+ */
+@property (nonatomic,assign) IBInspectable BOOL      isPersian;
+
 @end
