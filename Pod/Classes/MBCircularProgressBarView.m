@@ -305,6 +305,16 @@
   return self.progressLayer.countdown;
 }
 
+-(void)setIsPersian:(BOOL)persian
+{
+    self.progressLayer.isPersian = persian;
+}
+
+-(BOOL)isPersian
+{
+    return self.progressLayer.isPersian;
+}
+
 #pragma mark - CALayer
 
 -(MBCircularProgressBarLayer*)progressLayer{
