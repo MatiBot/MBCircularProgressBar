@@ -69,6 +69,10 @@
     [self setCountdown:NO];
 }
 
+- (void)layoutSubviews {
+    [self.layer setNeedsDisplay];
+}
+
 #pragma mark - Getters and Setters for layer properties
 
 -(void)setShowValueString:(BOOL)showValueString{
