@@ -155,5 +155,11 @@ typedef NS_ENUM(NSInteger, MBCircularProgressBarAppearanceType) {
  * Default is NO
  */
 @property (nonatomic,assign)  BOOL      countdown;
+    
+/**
+ * Draw the progress circle in counter-clockwise fashion.
+ */
+@property (nonatomic,assign) BOOL       counterclockwise;
 
+    
 @end

@@ -67,6 +67,7 @@
     [self setTextOffset:CGPointMake(0, 0)];
     [self setUnitFontName:@"HelveticaNeue-Thin"];
     [self setCountdown:NO];
+    [self setCounterclockwise:NO];
 }
 
 #pragma mark - Getters and Setters for layer properties
@@ -303,6 +304,14 @@
 
 -(BOOL)countdown {
   return self.progressLayer.countdown;
+}
+    
+-(void)setCounterclockwise:(BOOL)counterclockwise {
+    self.progressLayer.counterclockwise = counterclockwise;
+}
+    
+-(BOOL)counterclockwise {
+    return self.progressLayer.counterclockwise;
 }
 
 #pragma mark - CALayer

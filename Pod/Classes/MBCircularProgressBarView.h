@@ -142,8 +142,13 @@ IB_DESIGNABLE
 
 
 /**
- * The bool value to apply to if its counddown or not
+ * The bool value to apply to if its countdown or not
  */
 @property (nonatomic,assign) IBInspectable BOOL      countdown;
+    
+/**
+ * The bool value to apply if the progress bar should rendered counter-clockwise.
+ */
+@property (nonatomic,assign) IBInspectable BOOL      counterclockwise;
 
 @end

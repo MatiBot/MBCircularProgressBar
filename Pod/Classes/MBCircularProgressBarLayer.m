@@ -38,6 +38,7 @@
 @dynamic showValueString;
 @dynamic textOffset;
 @dynamic countdown;
+@dynamic counterclockwise;
 
 #pragma mark - Drawing
 
@@ -120,11 +121,24 @@
     }
     
     CGMutablePathRef arc = CGPathCreateMutable();
-    CGPathAddArc(arc, NULL,
-                 center.x, center.y, radius,
-                 (self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI-(2.f*M_PI)*(self.progressAngle/100.f)*(100.f-100.f*self.value/self.maxValue)/100.f,
-                 -(self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
-                 YES);
+    
+    CGFloat startAngle = (self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI-(2.f*M_PI)*(self.progressAngle/100.f)*(100.f-100.f*self.value/self.maxValue)/100.f;
+    CGFloat endAngle = -(self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI;
+    BOOL clockwise = !self.counterclockwise;
+    
+    if (self.counterclockwise)
+    {
+        startAngle = -(startAngle + M_PI);
+    }
+    
+    CGPathAddArc(arc,
+                 NULL,
+                 center.x,
+                 center.y,
+                 radius,
+                 startAngle,
+                 endAngle,
+                 clockwise);
     
     CGPathRef strokedArc =
     CGPathCreateCopyByStrokingPath(arc, NULL,
