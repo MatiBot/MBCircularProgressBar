@@ -131,11 +131,11 @@
 }
 
 -(void)setProgressColor:(UIColor*)color{
-    self.progressLayer.progressColor = color;
+    self.progressLayer.progressColor = color.CGColor;
 }
 
 -(UIColor*)progressColor{
-    return self.progressLayer.progressColor;
+    return [UIColor colorWithCGColor: self.progressLayer.progressColor];
 }
 
 -(void)setUnitFontSize:(CGFloat)unitFontSize{
@@ -171,11 +171,11 @@
 }
 
 -(void)setProgressStrokeColor:(UIColor*)color{
-    self.progressLayer.progressStrokeColor = color;
+    self.progressLayer.progressStrokeColor = color.CGColor;
 }
 
 -(UIColor*)progressStrokeColor{
-    return self.progressLayer.progressStrokeColor;
+    return [UIColor colorWithCGColor: self.progressLayer.progressStrokeColor];
 }
 
 -(void)setEmptyLineColor:(UIColor *)emptyLineColor{
