@@ -83,12 +83,12 @@ typedef NS_ENUM(NSInteger, MBCircularProgressBarAppearanceType) {
 /**
  * The color of the progress bar
  */
-@property (nonatomic,strong) UIColor    *progressColor;
+@property (nonatomic,assign) CGColorRef progressColor;
 
 /**
  * The color of the progress bar frame
  */
-@property (nonatomic,strong) UIColor    *progressStrokeColor;
+@property (nonatomic,assign) CGColorRef progressStrokeColor;
 
 /**
  * The shape of the progress bar cap	{kCGLineCapButt=0, kCGLineCapRound=1, kCGLineCapSquare=2}
