@@ -57,7 +57,7 @@
     [self drawProgressBar:rect context:context];
   
     if (self.showValueString){
-      [self drawText:rect context:context];
+      [self drawText:rect.size context:context];
     }
     
     UIGraphicsPopContext();
@@ -143,52 +143,55 @@
     CGPathRelease(strokedArc);
 }
 
-- (void)drawText:(CGRect)rect context:(CGContextRef)c{
-  NSMutableParagraphStyle* textStyle = NSMutableParagraphStyle.defaultParagraphStyle.mutableCopy;
-  textStyle.alignment = NSTextAlignmentLeft;
-  
-  CGFloat valueFontSize = self.valueFontSize == -1 ? CGRectGetHeight(rect)/5 : self.valueFontSize;
-  
-  NSDictionary* valueFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:valueFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
-  
-  NSMutableAttributedString *text = [NSMutableAttributedString new];
-  
-  NSString *formatString = [NSString stringWithFormat:@"%%.%df", (int)self.decimalPlaces];
+- (void)drawText:(CGSize)rectSize context:(CGContextRef)c
+{
+    NSMutableParagraphStyle* textStyle = NSMutableParagraphStyle.new;
+    textStyle.alignment = NSTextAlignmentCenter;
     
-  NSString* textToPresent;
-  if (self.countdown) {
-    textToPresent = [NSString stringWithFormat:formatString, (self.maxValue - self.value)];
-  } else {
-    textToPresent = [NSString stringWithFormat:formatString, self.value];
-  }
-  NSAttributedString* value = [[NSAttributedString alloc] initWithString:textToPresent
+    CGFloat valueFontSize = self.valueFontSize == -1 ? rectSize.height/5 : self.valueFontSize;
+    
+    NSDictionary* valueFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:valueFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+    
+    NSMutableAttributedString *text = [NSMutableAttributedString new];
+    
+    NSString *formatString = [NSString stringWithFormat:@"%%.%df", (int)self.decimalPlaces];
+    
+    NSString* textToPresent;
+    if (self.countdown) {
+        textToPresent = [NSString stringWithFormat:formatString, (self.maxValue - self.value)];
+    } else {
+        textToPresent = [NSString stringWithFormat:formatString, self.value];
+    }
+    NSAttributedString* value = [[NSAttributedString alloc] initWithString:textToPresent
                                                                 attributes:valueFontAttributes];
-  [text appendAttributedString:value];
-  
-  // set the decimal font size
-  NSUInteger decimalLocation = [text.string rangeOfString:@"."].location;
-  if (decimalLocation != NSNotFound){
-    NSDictionary* valueDecimalFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:self.valueDecimalFontSize == -1 ? valueFontSize : self.valueDecimalFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
-    NSRange decimalRange = NSMakeRange(decimalLocation, text.length - decimalLocation);
-    [text setAttributes:valueDecimalFontAttributes range:decimalRange];
-  }
-  
-  // ad the unit only if specified
-  if (self.showUnitString) {
-    NSDictionary* unitFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.unitFontName size:self.unitFontSize == -1 ? CGRectGetHeight(rect)/7 : self.unitFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+    [text appendAttributedString:value];
     
-    NSAttributedString* unit =
-    [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", self.unitString] attributes:unitFontAttributes];
-    [text appendAttributedString:unit];
-  }
-  
-  CGSize percentSize = [text size];
-  CGPoint textCenter = CGPointMake(
-    CGRectGetMidX(rect)-percentSize.width/2 + self.textOffset.x,
-    CGRectGetMidY(rect)-percentSize.height/2 + self.textOffset.y
-  );
-  
-  [text drawAtPoint:textCenter];
+    // set the decimal font size
+    NSUInteger decimalLocation = [text.string rangeOfString:@"."].location;
+    if (decimalLocation != NSNotFound){
+        NSDictionary* valueDecimalFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:self.valueDecimalFontSize == -1 ? valueFontSize : self.valueDecimalFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+        NSRange decimalRange = NSMakeRange(decimalLocation, text.length - decimalLocation);
+        [text setAttributes:valueDecimalFontAttributes range:decimalRange];
+    }
+    
+    // ad the unit only if specified
+    if (self.showUnitString) {
+        NSDictionary* unitFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.unitFontName size:self.unitFontSize == -1 ? rectSize.height/7 : self.unitFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+        
+        NSAttributedString* unit =
+        [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"\n%@", self.unitString] attributes:unitFontAttributes];
+        [text appendAttributedString:unit];
+    }
+    
+    CGSize percentSize = [text size];
+    CGPoint textCenter = CGPointMake(
+                                     rectSize.width/2-percentSize.width/2 + self.textOffset.x,
+                                     rectSize.height/2-percentSize.height/2 + self.textOffset.y
+                                     );
+    
+    CGRect rect = { textCenter, percentSize };
+    
+    [text drawInRect:rect];
 }
 
 #pragma mark - Override methods to support animations
