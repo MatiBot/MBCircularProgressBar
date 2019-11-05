@@ -66,6 +66,17 @@
     [self setCountdown:NO];
 }
 
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    [super traitCollectionDidChange:previousTraitCollection];
+    
+    if (@available(iOS 13.0, *)) {
+        if ([previousTraitCollection hasDifferentColorAppearanceComparedToTraitCollection: self.traitCollection]) {
+            // redraw layer (dark-mode)
+            [self.layer setNeedsDisplay];
+        }
+    }
+}
+
 #pragma mark - Getters and Setters for layer properties
 
 -(void)setShowValueString:(BOOL)showValueString{
