@@ -67,9 +67,9 @@ value | CGFloat | The value to be displayed in the center | [0,maxValue]
 maxValue | CGFloat | The maximum possible value, used to calculate the progress (value/maxValue)  | [0,∞)
 showValueString | BOOL | Should show value string |
 showUnitString | BOOL | Should show unit string |
-valueFontName | NSString | The name of the font of the value string | Any valid font name
+valueFont | UIFont | The font of the value string | Any valid font
 valueFontSize | CGFloat | The font size of the value text  | [0,∞)
-valueFontName | NSString | The name of the font of the unit string | Any valid font name
+unitFont | UIFont | The font of the unit string | Any valid font
 unitFontSize | CGFloat | The font size of the unit text | [0,∞)
 unitString | NSString | The string that represents the units, usually % |
 fontColor | UIColor | The color of the value and unit text |
