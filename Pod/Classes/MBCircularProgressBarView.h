@@ -43,7 +43,7 @@ IB_DESIGNABLE
 /** 
  * The name of the font of the value string
  */
-@property (nonatomic,copy)   IBInspectable NSString  *valueFontName;
+@property (nonatomic,copy)   IBInspectable UIFont  *valueFont;
 
 /**
  * The font size of the value text	[0,∞) 
@@ -63,7 +63,7 @@ IB_DESIGNABLE
 /**
  * The name of the font of the unit string 
  */
-@property (nonatomic,copy)   IBInspectable NSString  *unitFontName;
+@property (nonatomic,copy)   IBInspectable UIFont  *unitFont;
 
 /**
  * The font size of the unit text	[0,∞) 

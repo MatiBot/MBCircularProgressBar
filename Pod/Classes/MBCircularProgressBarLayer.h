@@ -127,12 +127,12 @@ typedef NS_ENUM(NSInteger, MBCircularProgressBarAppearanceType) {
 /**
  * The font size of the unit text	[0,∞)
  */
-@property (nonatomic,copy)    NSString  *unitFontName;
+@property (nonatomic,copy)    UIFont  *unitFont;
 
 /**
  * The name of the font of the unit string
  */
-@property (nonatomic,copy)    NSString  *valueFontName;
+@property (nonatomic,copy)    UIFont  *valueFont;
 
 /**
  * Should show unit screen

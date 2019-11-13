@@ -32,8 +32,8 @@
 @dynamic progressAppearanceType;
 @dynamic decimalPlaces;
 @dynamic valueDecimalFontSize;
-@dynamic unitFontName;
-@dynamic valueFontName;
+@dynamic unitFont;
+@dynamic valueFont;
 @dynamic showUnitString;
 @dynamic showValueString;
 @dynamic textOffset;
@@ -150,7 +150,7 @@
     
     CGFloat valueFontSize = self.valueFontSize == -1 ? rectSize.height/5 : self.valueFontSize;
     
-    NSDictionary* valueFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:valueFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+    NSDictionary* valueFontAttributes = @{NSFontAttributeName: [self.valueFont fontWithSize:valueFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
     
     NSMutableAttributedString *text = [NSMutableAttributedString new];
     
@@ -169,14 +169,14 @@
     // set the decimal font size
     NSUInteger decimalLocation = [text.string rangeOfString:@"."].location;
     if (decimalLocation != NSNotFound){
-        NSDictionary* valueDecimalFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.valueFontName size:self.valueDecimalFontSize == -1 ? valueFontSize : self.valueDecimalFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+        NSDictionary* valueDecimalFontAttributes = @{NSFontAttributeName: [self.valueFont fontWithSize:self.valueDecimalFontSize == -1 ? valueFontSize : self.valueDecimalFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
         NSRange decimalRange = NSMakeRange(decimalLocation, text.length - decimalLocation);
         [text setAttributes:valueDecimalFontAttributes range:decimalRange];
     }
     
     // ad the unit only if specified
     if (self.showUnitString) {
-        NSDictionary* unitFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: self.unitFontName size:self.unitFontSize == -1 ? rectSize.height/7 : self.unitFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
+        NSDictionary* unitFontAttributes = @{NSFontAttributeName: [self.unitFont fontWithSize:self.unitFontSize == -1 ? rectSize.height/7 : self.unitFontSize], NSForegroundColorAttributeName: self.fontColor, NSParagraphStyleAttributeName: textStyle};
         
         NSAttributedString* unit =
         [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"\n%@", self.unitString] attributes:unitFontAttributes];

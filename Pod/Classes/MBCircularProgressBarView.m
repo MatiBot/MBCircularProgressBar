@@ -63,9 +63,9 @@
     [self setDecimalPlaces:0];
     [self setShowUnitString:YES];
     [self setShowValueString:YES];
-    [self setValueFontName:@"HelveticaNeue-Thin"];
+    [self setValueFont:[UIFont systemFontOfSize:100]];
     [self setTextOffset:CGPointMake(0, 0)];
-    [self setUnitFontName:@"HelveticaNeue-Thin"];
+    [self setUnitFont:[UIFont systemFontOfSize:30 weight:UIFontWeightThin]];
     [self setCountdown:NO];
 }
 
@@ -269,20 +269,20 @@
   return self.progressLayer.valueDecimalFontSize;
 }
 
--(void)setUnitFontName:(NSString *)unitFontName{
-  self.progressLayer.unitFontName = unitFontName;
+-(void)setUnitFont:(UIFont *)unitFont{
+  self.progressLayer.unitFont = unitFont;
 }
 
--(NSString *)unitFontName{
-  return self.progressLayer.unitFontName;
+-(UIFont *)unitFont{
+  return self.progressLayer.unitFont;
 }
 
--(void)setValueFontName:(NSString *)valueFontName{
-  self.progressLayer.valueFontName = valueFontName;
+-(void)setValueFont:(UIFont *)valueFont{
+  self.progressLayer.valueFont = valueFont;
 }
 
--(NSString *)valueFontName{
-  return self.progressLayer.valueFontName;
+-(UIFont *)valueFont{
+  return self.progressLayer.valueFont;
 }
 
 -(void)setShowUnitString:(BOOL)showUnitString{
