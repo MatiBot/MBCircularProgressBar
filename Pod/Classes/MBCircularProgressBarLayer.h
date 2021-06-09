@@ -7,6 +7,7 @@
 //
 
 @import QuartzCore;
+@import UIKit;
 
 typedef NS_ENUM(NSInteger, MBCircularProgressBarAppearanceType) {
     MBCircularProgressBarAppearanceTypeOverlaysEmptyLine = 0,
