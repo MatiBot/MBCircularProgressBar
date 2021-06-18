@@ -67,6 +67,7 @@
     [self setTextOffset:CGPointMake(0, 0)];
     [self setUnitFont:[UIFont systemFontOfSize:30 weight:UIFontWeightThin]];
     [self setCountdown:NO];
+    [self setCounterclockwise:NO];
 }
 
 - (void)layoutSubviews {
@@ -307,6 +308,14 @@
 
 -(BOOL)countdown {
   return self.progressLayer.countdown;
+}
+    
+-(void)setCounterclockwise:(BOOL)counterclockwise {
+    self.progressLayer.counterclockwise = counterclockwise;
+}
+    
+-(BOOL)counterclockwise {
+    return self.progressLayer.counterclockwise;
 }
 
 #pragma mark - CALayer
