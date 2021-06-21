@@ -43,7 +43,7 @@ IB_DESIGNABLE
 /** 
  * The name of the font of the value string
  */
-@property (nonatomic,copy)   IBInspectable NSString  *valueFontName;
+@property (nonatomic,copy)   IBInspectable UIFont  *valueFont;
 
 /**
  * The font size of the value text	[0,∞) 
@@ -63,7 +63,7 @@ IB_DESIGNABLE
 /**
  * The name of the font of the unit string 
  */
-@property (nonatomic,copy)   IBInspectable NSString  *unitFontName;
+@property (nonatomic,copy)   IBInspectable UIFont  *unitFont;
 
 /**
  * The font size of the unit text	[0,∞) 
@@ -142,8 +142,13 @@ IB_DESIGNABLE
 
 
 /**
- * The bool value to apply to if its counddown or not
+ * The bool value to apply to if its countdown or not
  */
 @property (nonatomic,assign) IBInspectable BOOL      countdown;
+    
+/**
+ * The bool value to apply if the progress bar should rendered counter-clockwise.
+ */
+@property (nonatomic,assign) IBInspectable BOOL      counterclockwise;
 
 @end
