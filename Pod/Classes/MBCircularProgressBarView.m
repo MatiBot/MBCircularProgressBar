@@ -63,10 +63,26 @@
     [self setDecimalPlaces:0];
     [self setShowUnitString:YES];
     [self setShowValueString:YES];
-    [self setValueFontName:@"HelveticaNeue-Thin"];
+    [self setValueFont:[UIFont systemFontOfSize:100]];
     [self setTextOffset:CGPointMake(0, 0)];
-    [self setUnitFontName:@"HelveticaNeue-Thin"];
+    [self setUnitFont:[UIFont systemFontOfSize:30 weight:UIFontWeightThin]];
     [self setCountdown:NO];
+    [self setCounterclockwise:NO];
+}
+
+- (void)layoutSubviews {
+    [self.layer setNeedsDisplay];
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    [super traitCollectionDidChange:previousTraitCollection];
+    
+    if (@available(iOS 13.0, *)) {
+        if ([previousTraitCollection hasDifferentColorAppearanceComparedToTraitCollection: self.traitCollection]) {
+            // redraw layer (dark-mode)
+            [self.layer setNeedsDisplay];
+        }
+    }
 }
 
 #pragma mark - Getters and Setters for layer properties
@@ -265,20 +281,20 @@
   return self.progressLayer.valueDecimalFontSize;
 }
 
--(void)setUnitFontName:(NSString *)unitFontName{
-  self.progressLayer.unitFontName = unitFontName;
+-(void)setUnitFont:(UIFont *)unitFont{
+  self.progressLayer.unitFont = unitFont;
 }
 
--(NSString *)unitFontName{
-  return self.progressLayer.unitFontName;
+-(UIFont *)unitFont{
+  return self.progressLayer.unitFont;
 }
 
--(void)setValueFontName:(NSString *)valueFontName{
-  self.progressLayer.valueFontName = valueFontName;
+-(void)setValueFont:(UIFont *)valueFont{
+  self.progressLayer.valueFont = valueFont;
 }
 
--(NSString *)valueFontName{
-  return self.progressLayer.valueFontName;
+-(UIFont *)valueFont{
+  return self.progressLayer.valueFont;
 }
 
 -(void)setShowUnitString:(BOOL)showUnitString{
@@ -303,6 +319,14 @@
 
 -(BOOL)countdown {
   return self.progressLayer.countdown;
+}
+    
+-(void)setCounterclockwise:(BOOL)counterclockwise {
+    self.progressLayer.counterclockwise = counterclockwise;
+}
+    
+-(BOOL)counterclockwise {
+    return self.progressLayer.counterclockwise;
 }
 
 #pragma mark - CALayer
