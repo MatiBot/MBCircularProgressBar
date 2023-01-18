@@ -7,6 +7,7 @@
 //
 
 @import QuartzCore;
+@import UIKit;
 
 /**
  * The MBCircularProgressBarLayer class is a CALayer subclass that represents the underlying layer
