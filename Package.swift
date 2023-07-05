@@ -3,6 +3,9 @@ import PackageDescription
 
 let package = Package(
     name: "MBCircularProgressBar",
+    platforms: [
+        .iOS(.v9)
+    ],
     products: [
         .library(name: "MBCircularProgressBar", targets: ["MBCircularProgressBar"])
     ],
@@ -10,7 +13,8 @@ let package = Package(
         .target(
             name: "MBCircularProgressBar",
             path: "Sources",
-            exclude: ["Example"]
+            exclude: ["Example"],
+            publicHeadersPath: "."
         ),
     ]
 )
