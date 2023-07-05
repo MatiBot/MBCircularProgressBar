@@ -4,11 +4,11 @@ import PackageDescription
 let package = Package(
     name: "MBCircularProgressBar",
     products: [
-        .library(name: "MBCircularProgressBar", targets: ["CircularProgressBar"])
+        .library(name: "MBCircularProgressBar", targets: ["MBCircularProgressBar"])
     ],
     targets: [
         .target(
-            name: "CircularProgressBar",
+            name: "MBCircularProgressBar",
             path: "Sources",
             exclude: ["Example"]
         ),
