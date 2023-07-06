@@ -16,6 +16,17 @@ To run the example project, clone the repo, and run `pod update` from the Exampl
 
 ## Installation
 
+### Swift Package Manager
+
+1. Add the following to your `Package.swift`:
+    ```swift
+    .package(url: "https://github.com/MatiBot/MBCircularProgressBar.git", .upToNextMajor(from: "0.3.4")),
+    ```
+2. Next, add `MBCircularProgressBar` to your App targets dependencies like so:
+    ```swift
+    .target(name: "App", dependencies: ["CircularProgressBar"]),
+    ```
+    
 ### Cocoapods
 
 MBCircularProgressBar is available through [CocoaPods](http://cocoapods.org).
