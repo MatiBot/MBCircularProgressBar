@@ -102,7 +102,7 @@ In order to animate a change in the progress bar you should nest the value prope
 
 ## Author
 
-Mati Bot, matibot@gmail.com, [@b0tnik](https://twitter.com/b0tnik)
+Mati Bot, os@mati.bot, [@b0tnik](https://twitter.com/b0tnik)
 
 ## Apps that use it:
 
