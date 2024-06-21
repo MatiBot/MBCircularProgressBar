@@ -135,8 +135,8 @@
 
     
     CGContextAddPath(c, strokedArc);
-    CGContextSetFillColorWithColor(c, self.progressColor.CGColor);
-    CGContextSetStrokeColorWithColor(c, self.progressStrokeColor.CGColor);
+    CGContextSetFillColorWithColor(c, self.progressColor);
+    CGContextSetStrokeColorWithColor(c, self.progressStrokeColor);
     CGContextDrawPath(c, kCGPathFillStroke);
     
     CGPathRelease(arc);
@@ -193,28 +193,28 @@
 
 #pragma mark - Override methods to support animations
 
++ (BOOL)isCustomAnimationKey:(NSString *)key {
+    return [key isEqualToString:@"value"] || [key isEqualToString:@"progressColor"] || [key isEqualToString:@"progressStrokeColor"];
+}
+    
 + (BOOL)needsDisplayForKey:(NSString *)key {
-    if ([key isEqualToString:@"value"]) {
-        return YES;
-    }
+    if ([self isCustomAnimationKey:key]) return true;
     return [super needsDisplayForKey:key];
 }
-
-- (id<CAAction>)actionForKey:(NSString *)event{
-    if ([self presentationLayer] != nil) {
-        if ([event isEqualToString:@"value"]) {  
-            id animation = [super actionForKey:@"backgroundColor"];
-            
-            if (animation == nil || [animation isEqual:[NSNull null]])
-            {
-                [self setNeedsDisplay];
-                return [NSNull null];
-            }
-            [animation setKeyPath:event];
-            [animation setFromValue:[self.presentationLayer valueForKey:@"value"]];
-            [animation setToValue:nil];
-            return animation;
+    
+- (id<CAAction>)actionForKey:(NSString *)event {
+    
+    if ([self presentationLayer] != nil && [[self class] isCustomAnimationKey:event]) {
+        id animation = [super actionForKey:@"backgroundColor"];
+        
+        if (animation == nil || [animation isEqual:[NSNull null]]) {
+            [self setNeedsDisplay];
+            return [NSNull null];
         }
+        [animation setKeyPath:event];
+        [animation setFromValue:[self.presentationLayer valueForKey:event]];
+        [animation setToValue:nil];
+        return animation;
     }
     
     return [super actionForKey:event];
