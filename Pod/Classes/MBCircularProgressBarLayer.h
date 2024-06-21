@@ -156,4 +156,10 @@ typedef NS_ENUM(NSInteger, MBCircularProgressBarAppearanceType) {
  */
 @property (nonatomic,assign)  BOOL      countdown;
 
+/**
+ * The bool value to convert English number to Persian
+ * Default is NO
+ */
+@property (nonatomic,assign) IBInspectable BOOL      isPersian;
+
 @end
