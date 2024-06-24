@@ -119,10 +119,20 @@
         radius = radius - self.emptyLineWidth - self.progressLineWidth/2.f;
     }
     
+    CGFloat currentSelfValue = self.value;
+    CGFloat currentSelfMaxValue = self.maxValue;
+    
+    if (currentSelfValue >= currentSelfMaxValue) {
+        currentSelfValue = currentSelfMaxValue;//Avoid to draw the progress line repeatly.
+    }
+    
     CGMutablePathRef arc = CGPathCreateMutable();
-    CGPathAddArc(arc, NULL,
-                 center.x, center.y, radius,
-                 (self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI-(2.f*M_PI)*(self.progressAngle/100.f)*(100.f-100.f*self.value/self.maxValue)/100.f,
+    CGPathAddArc(arc,
+                 NULL,
+                 center.x,
+                 center.y,
+                 radius,
+                 (self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI-(2.f*M_PI)*(self.progressAngle/100.f)*(100.f-100.f*currentSelfValue/currentSelfMaxValue)/100.f,
                  -(self.progressAngle/100.f)*M_PI-((-self.progressRotationAngle/100.f)*2.f+0.5)*M_PI,
                  YES);
     
